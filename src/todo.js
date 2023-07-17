@@ -1,6 +1,10 @@
 
 export default class Todo {
     #project = "";
+    #title;
+    #desc;
+    #dueDate;
+    #priority;
     // Consturctor
     constructor(title, desc, dueDate, priority) {
         this.#title = title;
@@ -39,5 +43,10 @@ export default class Todo {
     }
     set project(project){
         this.#project = project;
+    }
+
+    // To JSON
+    toJSON(){
+        return {title:this.#title, desc:this.#desc, dueDate:this.#dueDate, priority:this.#priority, project:this.#project}
     }
 };

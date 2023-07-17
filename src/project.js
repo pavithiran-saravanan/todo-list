@@ -1,5 +1,7 @@
 
 export default class project {
+    #title;
+    #todos;
     #count = 0;
     constructor (title, todos) {
         this.#title = title;
@@ -19,6 +21,11 @@ export default class project {
     }
     set todos(todos){
         this.#todos = todos;
+    }
+
+    // toJson
+    toJSON(){
+        return {title:this.#title, todos: this.#todos, count: this.#count}
     }
 
     // Private Methods
