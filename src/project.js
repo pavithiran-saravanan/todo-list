@@ -1,5 +1,5 @@
 
-export default class project {
+export default class Project {
     #title;
     #todos;
     #count = 0;
