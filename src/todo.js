@@ -5,6 +5,7 @@ export default class Todo {
     #desc;
     #dueDate;
     #priority;
+    #isCompleted = false;
     // Consturctor
     constructor(title, desc, dueDate, priority) {
         this.#title = title;
@@ -48,5 +49,15 @@ export default class Todo {
     // To JSON
     toJSON(){
         return {title:this.#title, desc:this.#desc, dueDate:this.#dueDate, priority:this.#priority, project:this.#project}
+    }
+
+    // Mark as complete
+    markAsComplete(){
+        this.#isCompleted = true;
+    }
+
+    // Toggle completion
+    toggleCompletionStatus(){
+        this.#isCompleted = !this.#isCompleted;
     }
 };
