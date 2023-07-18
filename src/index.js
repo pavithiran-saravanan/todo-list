@@ -1,28 +1,25 @@
-import Project from "./project";
-import Todo from "./todo";
 import { createPriority } from "./priority";
-import displayProjects, { TodoApp, readFromLocal, writeToLocal } from "./todo-app";
+import { TodoApp } from "./todo-app";
 
 const content = document.querySelector('#content'); content.textContent = "Working";
+localStorage.clear();
 
-// Create Workout Project
-const todo1 = new Todo("Do Pushups", 'Do 3 sets of 10 pushups', new Date('2023', '07', '18'), createPriority(1));
-const todo2 = new Todo("Do Pullups", 'Do 1 set of 5 pullups', new Date('2023', '07', '20'), createPriority(2));
-const project_workout = new Project("Workout", [todo1, todo2]);
+// Create myTodoApp
+const myApp = new TodoApp([]);
 
-// Create Odin Project
-const todo3 = new Todo("Learn JavaScript", 'Complete advanced JavaScript section from the Odin Project.', new Date('2023', '07', '25'), createPriority(1));
-const todo4 = new Todo("Learn React", 'Complete the new React section from the Odin Project.', new Date('2023', '07', '28'), createPriority(3));
-const project_odin = new Project("Odin", [todo3, todo4]);
+// If projects data is found in local storage, read from it. If not found, initialize app with default projects and write to local storage.
+if(localStorage.getItem('projects')){
+    myApp.readFromLocal();
+    console.log('key found in local storage. reading data.');
+}
+else{
+    console.log('key not found in local storage. initializing default projects. writing to local storage.');
+    myApp.initialize();
+}
 
-// Create Projects array
-const myTodoApp = new TodoApp([project_workout, project_odin]);
+myApp.displayProjects();
 
-// Store projects in local storage
-myTodoApp.writeToLocal();
-
-// Get projects from local storage
-myTodoApp.readFromLocal();
-
-// Display projects
-myTodoApp.displayProjects();
+console.log("All tasks: "); console.log(myApp.getAllTodos().map(todo=>todo.title));
+console.log("High Priority tasks: "); console.log(myApp.getPriorityTodos(3).map(todo=>todo.title));
+console.log("Today's tasks: "); console.log(myApp.getDailyTodos().map(todo=>todo.title));
+console.log("Week's tasks: "); console.log(myApp.getWeeklyTodos().map(todo=>todo.title));
