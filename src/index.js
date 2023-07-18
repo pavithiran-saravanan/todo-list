@@ -1,7 +1,7 @@
 import Project from "./project";
 import Todo from "./todo";
 import { createPriority } from "./priority";
-import displayProjects, { readFromLocal, writeToLocal } from "./projects";
+import displayProjects, { TodoApp, readFromLocal, writeToLocal } from "./todo-app";
 
 const content = document.querySelector('#content'); content.textContent = "Working";
 
@@ -16,13 +16,13 @@ const todo4 = new Todo("Learn React", 'Complete the new React section from the O
 const project_odin = new Project("Odin", [todo3, todo4]);
 
 // Create Projects array
-const projects = [project_workout, project_odin];
+const myTodoApp = new TodoApp([project_workout, project_odin]);
 
 // Store projects in local storage
-writeToLocal(projects, 'projects');
+myTodoApp.writeToLocal();
 
 // Get projects from local storage
-const _projects = readFromLocal('projects');
+myTodoApp.readFromLocal();
 
 // Display projects
-displayProjects(_projects);
+myTodoApp.displayProjects();
