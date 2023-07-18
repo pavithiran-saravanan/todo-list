@@ -3,6 +3,7 @@ import Project from "./project";
 import Todo from "./todo";
 import { createPriority } from "./priority";
 import { differenceInDays, isSameWeek, isToday } from "date-fns";
+import { th } from "date-fns/locale";
 
 export class TodoApp{
     #projects = [];
@@ -27,7 +28,7 @@ export class TodoApp{
             return;
         }
         this.projects.forEach((project, projectId) => {
-            console.log(`   ${projectId + 1}. ${project.title}`);
+            console.log(`   ${projectId + 1}. ${project.title} ${project.count}`);
             project.todos.forEach((todo, todoId) => {
                 console.log(`       ${todoId + 1}. ${todo.title} - ${todo.priority.text} - ${getFormattedDate(todo.dueDate)}`);
             });
@@ -122,6 +123,18 @@ export class TodoApp{
             })
         })
         return weeklyTodos;
+    }
+
+    // Delete a project by it's index
+    deleteProject(index){
+        this.#projects.splice(index, 1);
+        this.writeToLocal();
+    }
+
+    // Add a new project
+    addProject(project){
+        this.#projects.push(project);
+        this.writeToLocal();
     }
 }
 

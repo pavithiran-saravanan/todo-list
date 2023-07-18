@@ -16,6 +16,9 @@ export default class Project {
     get todos(){
         return this.#todos;
     }
+    get count(){
+        return this.#count;
+    }
     set title(title){
         this.#title = title;
     }
@@ -34,8 +37,13 @@ export default class Project {
     }
 
     // Public Methods
-    add(todo){
-        this.#todos.append(todo);
+    addTodo(todo){
+        this.#todos.push(todo);
+        this.#updateCount();
+    }
+
+    deleteTodo(index){
+        this.#todos.splice(index, 1);
         this.#updateCount();
     }
 }

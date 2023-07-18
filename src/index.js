@@ -1,4 +1,5 @@
 import { createPriority } from "./priority";
+import Project from "./project";
 import { TodoApp } from "./todo-app";
 
 const content = document.querySelector('#content'); content.textContent = "Working";
@@ -17,6 +18,9 @@ else{
     myApp.initialize();
 }
 
+myApp.deleteProject(0);
+myApp.projects[0].deleteTodo(1);
+myApp.addProject(new Project('Full Stack Open', []));
 myApp.displayProjects();
 
 console.log("All tasks: "); console.log(myApp.getAllTodos().map(todo=>todo.title));
