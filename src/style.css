@@ -1,0 +1,28 @@
+*{
+    border: 0px;
+    margin: 0px;
+}
+
+:root{
+    --color-accent: #504EAB;
+    --color-accent-hover: #5856be;
+    --color-accent-light: #E2E9FF;
+    --color-white: white;
+    --color-grey: #333;
+
+    --color-red: #D14848;
+    --color-red-hover: #e64f4f;
+
+    --color-green: #50AB4E;
+    --color-green-light: #E2FFE8;
+
+    --color-mustard: #ABA24E;
+    --color-mustard-light: #FEFFE2;
+
+    --color-brick: #AB4E4E;
+    --color-brick-light: #FFE2E2;
+}
+
+body{
+    color: var(--color-brick);
+}
