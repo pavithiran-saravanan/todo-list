@@ -2,8 +2,10 @@ import { createPriority } from "./priority";
 import Project from "./project";
 import { TodoApp } from "./todo-app";
 import './style.css';
+import renderStaticContent, { populateProjects } from "./dom-handler";
 
 localStorage.clear();
+renderStaticContent();
 
 // Create myTodoApp
 const myApp = new TodoApp([]);
@@ -17,6 +19,9 @@ else{
     console.log('key not found in local storage. initializing default projects. writing to local storage.');
     myApp.initialize();
 }
+
+populateProjects(myApp.projects.map((proj)=>{return proj.title}));
+
 
 // myApp.deleteProject(0);
 // myApp.projects[0].deleteTodo(1);

@@ -1,8 +1,13 @@
+/* Poppins Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* CSS Reset */
 *{
     border: 0px;
     margin: 0px;
 }
 
+/* Color variables */
 :root{
     --color-accent: #504EAB;
     --color-accent-hover: #5856be;
@@ -25,4 +30,5 @@
 
 body{
     color: var(--color-brick);
+    font-family: 'poppins';
 }
