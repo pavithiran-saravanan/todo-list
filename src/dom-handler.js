@@ -2,9 +2,8 @@ import Comp, { getMenuItem, getProjectItem } from "./ui-components";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
-import weekIcon from './icons/week-icon-outline.svg';
-import priorityIcon from './icons/priority-icon-outline.svg';
 import profilePic from './images/stock-profile-2.jpg';
+import dropDown from './icons/dropdown-icon.svg';
 
 export default function renderStaticContent(){
     const content = document.querySelector('#content');
@@ -49,11 +48,12 @@ export default function renderStaticContent(){
 
     // Create 2 titles: Quick Links and Projects. Append quick links to menu section. Append Projects title and 'add project' button to projectsTitleContainer.
     document.querySelector('.menu-title-container').append(
-        new Comp('div', {classList: ['menu-title'], textContent: 'Quick Links'}).render()
+        new Comp('div', {classList: ['menu-title'], textContent: 'Quick Links'}).render(),
+        new Comp('img', {classList: ['dropdown-btn'], src: dropDown, width: 20}).render()
     );
     document.querySelector('.projects-title-container').append(
         new Comp('div', {classList: ['projects-title'], textContent: 'Projects'}).render(),
-        new Comp('img', {classList: ['add-btn'], src: addBtn, width: 20}).render()
+        new Comp('img', {classList: ['add-btn'], src: addBtn, width: 18}).render()
     );
 
     // Create 4 menu items: All tasks, Today, This Week, High Priority. Append all 4 to quickLinks section.
@@ -61,11 +61,12 @@ export default function renderStaticContent(){
     menuBody.append(
         getMenuItem('All Tasks', tasksIcon),
         getMenuItem('Today', todayIcon),
-        getMenuItem('This Week', weekIcon),
-        getMenuItem('High Priority', priorityIcon),
+        getMenuItem('This Week', todayIcon),
+        getMenuItem('High Priority', tasksIcon),
     );   
 }
 
+// Get all project titles from myApp. Create a project item for each project title. Append all to projects section.
 export function populateProjects(projectTitles){
     const projectsBody = document.querySelector('.projects-body');
     for(const title of projectTitles){
@@ -75,5 +76,4 @@ export function populateProjects(projectTitles){
 
 
 
-// Get all project titles from myApp. Create a project item for each project title. Append all to projects section.
 
