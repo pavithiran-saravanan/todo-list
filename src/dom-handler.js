@@ -83,8 +83,5 @@ function toggleMenuItems(e){
     console.log('dropdown clicked');
     document.querySelector('.menu-body').classList.toggle('hide');
     e.target.classList.toggle('expanded');
+    document.querySelector('.projects-section').style
 }
-
-
-
-

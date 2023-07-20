@@ -25,3 +25,7 @@ export function getProjectItem(title){
     element.append(new Comp('img', {classList: ['remove-project-btn btn'], src: cancelIcon, width: 10}).render());
     return element;
 }
+
+export function getSvgObject(src, className){
+    return new Comp('object', {classList: [`${className}`], type : 'image/svg+xml', data: src, width: 40}).render();
+}

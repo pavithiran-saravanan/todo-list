@@ -2,7 +2,7 @@ import { createPriority } from "./priority";
 import Project from "./project";
 import { TodoApp } from "./todo-app";
 import './style.css';
-import renderStaticContent, { populateProjects } from "./dom-handler";
+import renderStaticContent, { populateProjects, testSVG } from "./dom-handler";
 
 localStorage.clear();
 renderStaticContent();
