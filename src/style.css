@@ -11,8 +11,14 @@
 /* Color variables */
 :root{
     --color-accent: #504EAB;
-    --color-accent-hover: #5856be;
     --color-accent-light: #E2E9FF;
+
+    /* Accent Test */
+    --color-accent: #ab4e4e;
+    --color-accent-light: #ffe2e2;
+
+    --color-accent-hover: #5856be;
+
     --color-white: rgba(255, 255, 255, 0.7);
     --color-grey: #333;
 
@@ -67,6 +73,9 @@ body{
 
 .main{
     flex: 1;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
 }
 
 /* Profile Section */
@@ -108,8 +117,11 @@ body{
     margin-top: -7px;
 }
 
-
 /* Menu Section */
+.menu-section, .projects-section{
+    display: grid;
+    gap: 16px;
+}
 .menu-item{
     border: 2px solid var(--color-accent-light);
     border-radius: 12px;
@@ -128,6 +140,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    transition: all 1s;
 }
 
 .menu-item img{
@@ -137,7 +150,7 @@ body{
 
 /* Projects Section */
 .projects-title-container, .menu-title-container{
-    margin-bottom: 15px;    
+    /* margin-bottom: 15px;     */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,14 +180,17 @@ body{
 }
 
 .add-btn, .dropdown-btn{
-    width: 23px;
-    margin-top: -1px;
+    width: 27px;
+    margin-top: -2px;
     /* color-accent */
     filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+    /* color-grey */
+    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);
+
 }
 
 .dropdown-btn{
-    width: 21px;
+    width: 25px;
 }
 
 .expanded{
@@ -186,5 +202,11 @@ body{
     /* color-grey */
     filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);
 }
+
+/* class to hide elements */
+.hide{
+    display: none;
+}
+
 
 

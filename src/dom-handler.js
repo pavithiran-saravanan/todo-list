@@ -49,7 +49,7 @@ export default function renderStaticContent(){
     // Create 2 titles: Quick Links and Projects. Append quick links to menu section. Append Projects title and 'add project' button to projectsTitleContainer.
     document.querySelector('.menu-title-container').append(
         new Comp('div', {classList: ['menu-title'], textContent: 'Quick Links'}).render(),
-        new Comp('img', {classList: ['dropdown-btn'], src: dropDown, width: 20}).render()
+        new Comp('img', {classList: ['dropdown-btn expanded'], src: dropDown, width: 20}).render()
     );
     document.querySelector('.projects-title-container').append(
         new Comp('div', {classList: ['projects-title'], textContent: 'Projects'}).render(),
@@ -64,6 +64,10 @@ export default function renderStaticContent(){
         getMenuItem('This Week', todayIcon),
         getMenuItem('High Priority', tasksIcon),
     );   
+
+    // Add event listener to dropdown
+    const dropDownBtn = document.querySelector('.dropdown-btn');
+    dropDownBtn.addEventListener('click', toggleMenuItems);
 }
 
 // Get all project titles from myApp. Create a project item for each project title. Append all to projects section.
@@ -72,6 +76,13 @@ export function populateProjects(projectTitles){
     for(const title of projectTitles){
         projectsBody.append(getProjectItem(title));
     }
+}
+
+// Function to hide and unhide quick links
+function toggleMenuItems(e){
+    console.log('dropdown clicked');
+    document.querySelector('.menu-body').classList.toggle('hide');
+    e.target.classList.toggle('expanded');
 }
 
 
