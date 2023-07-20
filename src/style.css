@@ -32,3 +32,7 @@ body{
     color: var(--color-brick);
     font-family: 'poppins';
 }
+
+.remove-project-btn{
+    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+}
