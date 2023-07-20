@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n___CSS_LOADER_EXPORT___.push([module.id, \"@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap);\"]);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `/* Poppins Font Import */\n\n/* CSS Reset */\n*{\n    border: 0px;\n    margin: 0px;\n}\n\n/* Color variables */\n:root{\n    --color-accent: #504EAB;\n    --color-accent-hover: #5856be;\n    --color-accent-light: #E2E9FF;\n    --color-white: white;\n    --color-grey: #333;\n\n    --color-red: #D14848;\n    --color-red-hover: #e64f4f;\n\n    --color-green: #50AB4E;\n    --color-green-light: #E2FFE8;\n\n    --color-mustard: #ABA24E;\n    --color-mustard-light: #FEFFE2;\n\n    --color-brick: #AB4E4E;\n    --color-brick-light: #FFE2E2;\n}\n\nbody{\n    color: var(--color-brick);\n    font-family: 'poppins';\n}\n`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todo-list/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n___CSS_LOADER_EXPORT___.push([module.id, \"@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap);\"]);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `/* Poppins Font Import */\n\n/* CSS Reset */\n*{\n    border: 0px;\n    margin: 0px;\n}\n\n/* Color variables */\n:root{\n    --color-accent: #504EAB;\n    --color-accent-hover: #5856be;\n    --color-accent-light: #E2E9FF;\n    --color-white: white;\n    --color-grey: #333;\n\n    --color-red: #D14848;\n    --color-red-hover: #e64f4f;\n\n    --color-green: #50AB4E;\n    --color-green-light: #E2FFE8;\n\n    --color-mustard: #ABA24E;\n    --color-mustard-light: #FEFFE2;\n\n    --color-brick: #AB4E4E;\n    --color-brick-light: #FFE2E2;\n}\n\nbody{\n    color: var(--color-brick);\n    font-family: 'poppins';\n}\n\n.remove-project-btn{\n    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);\n}\n`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todo-list/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -586,7 +586,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Comp),\n/* harmony export */   getMenuItem: () => (/* binding */ getMenuItem),\n/* harmony export */   getProjectItem: () => (/* binding */ getProjectItem)\n/* harmony export */ });\n\n// Generate simple dom elements with required properties while invoking constructor\nclass Comp {\n    constructor(type, properties){\n        this.element = document.createElement(type);\n        if(properties === undefined) return;\n        for(const prop in properties){\n            this.element[prop] = properties[prop];\n        }\n    }\n    render = ()=>{return this.element};\n}\n\nfunction getMenuItem(title){\n    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container menu-item`]}).render();\n    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title menu-item-text`], textContent: title}).render());\n    return element;\n}\n\nfunction getProjectItem(title){\n    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container project-item`]}).render();\n    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title project-item-text`], textContent: title}).render());\n    element.append(new Comp('button', {classList: ['remove-project-btn btn'], textContent: 'x'}).render());\n    return element;\n}\n\n//# sourceURL=webpack://todo-list/./src/ui-components.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Comp),\n/* harmony export */   getMenuItem: () => (/* binding */ getMenuItem),\n/* harmony export */   getProjectItem: () => (/* binding */ getProjectItem)\n/* harmony export */ });\n/* harmony import */ var _icons_close_icon_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons/close-icon.svg */ \"./src/icons/close-icon.svg\");\n\n\n// Generate simple dom elements with required properties while invoking constructor\nclass Comp {\n    constructor(type, properties){\n        this.element = document.createElement(type);\n        if(properties === undefined) return;\n        for(const prop in properties){\n            this.element[prop] = properties[prop];\n        }\n    }\n    render = ()=>{return this.element};\n}\n\nfunction getMenuItem(title){\n    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container menu-item`]}).render();\n    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title menu-item-text`], textContent: title}).render());\n    return element;\n}\n\nfunction getProjectItem(title){\n    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container project-item`]}).render();\n    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title project-item-text`], textContent: title}).render());\n    element.append(new Comp('img', {classList: ['remove-project-btn btn'], src: _icons_close_icon_svg__WEBPACK_IMPORTED_MODULE_0__, width: 10}).render());\n    return element;\n}\n\n//# sourceURL=webpack://todo-list/./src/ui-components.js?");
+
+/***/ }),
+
+/***/ "./src/icons/close-icon.svg":
+/*!**********************************!*\
+  !*** ./src/icons/close-icon.svg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"63e03a8bcceec6f4c5fc.svg\";\n\n//# sourceURL=webpack://todo-list/./src/icons/close-icon.svg?");
 
 /***/ }),
 
@@ -651,6 +661,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -665,6 +687,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
