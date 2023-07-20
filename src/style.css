@@ -5,6 +5,7 @@
 *{
     border: 0px;
     margin: 0px;
+    box-sizing: border-box;
 }
 
 /* Color variables */
@@ -12,7 +13,7 @@
     --color-accent: #504EAB;
     --color-accent-hover: #5856be;
     --color-accent-light: #E2E9FF;
-    --color-white: white;
+    --color-white: rgba(255, 255, 255, 0.7);
     --color-grey: #333;
 
     --color-red: #D14848;
@@ -31,8 +32,77 @@
 body{
     color: var(--color-brick);
     font-family: 'poppins';
+    height: 100vh;
 }
 
-.remove-project-btn{
+#content{
+    height: 100%;
+    background-color: var(--color-accent-light);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+}
+
+/* Sidebar */
+.sidebar, .main{
+    background-color: var(--color-white);
+    border-radius: 24px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.197);
+}
+
+.sidebar{
+    width: 400px;
+    padding: 25px;
+}
+
+/* Profile Section */
+.profile-section{
+    padding: 18px;
+    background-color: var(--color-accent-light);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+}
+
+.profile-picture{
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    grid-row: 1/-1;
+}
+
+.profile-picture img {
+    width: 100%;
+}
+
+.username{
+    color: var(--color-grey);
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.taskmaster{
+    color: var(--color-accent);
+    font-weight: medium;
+    font-size: 14px;
+    margin-top: -7px;
+}
+
+
+
+.remove-project-btn {
+    /* color-accent */
     filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+}
+
+.add-btn{
+    /* color-grey */
+    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);
 }

@@ -12,9 +12,10 @@ export default class Comp {
     render = ()=>{return this.element};
 }
 
-export function getMenuItem(title){
+export function getMenuItem(title, imgSrc){
     const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container menu-item`]}).render();
-    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title menu-item-text`], textContent: title}).render());
+    element.append(new Comp('img', {classList: ['menu-item-icon'], src: imgSrc, width: 25}).render());
+    element.append(new Comp('div', {classList: ['menu-item-text'], textContent: title}).render());
     return element;
 }
 

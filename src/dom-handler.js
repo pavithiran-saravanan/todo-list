@@ -1,13 +1,20 @@
 import Comp, { getMenuItem, getProjectItem } from "./ui-components";
+import addBtn from './icons/add-icon-bold.svg';
+import tasksIcon from './icons/tasks-icon.svg';
+import todayIcon from './icons/today-icon-outline.svg';
+import weekIcon from './icons/week-icon-outline.svg';
+import priorityIcon from './icons/priority-icon-outline.svg';
+import profilePic from './images/stock-profile-2.jpg';
 
 export default function renderStaticContent(){
-    const content = document.querySelector('#content'); content.textContent = "Working";
+    const content = document.querySelector('#content');
 
     // Create two divs: sidebar and main. Append them to content.
     content.append(
         new Comp('div', {classList: ['sidebar']}).render(),
         new Comp('div', {classList: ['main']}).render(),
     )
+    document.querySelector('.main').textContent = 'Main';
 
     // Create 3 divs: profileSection, menuSection, projectsSection. Append them to sidebar.
     const sidebar = document.querySelector('.sidebar');
@@ -21,9 +28,11 @@ export default function renderStaticContent(){
     const profileSection = document.querySelector('.profile-section');
     profileSection.append(
         new Comp('div', {classList: ['profile-picture']}).render(),
-        new Comp('div', {classList: ['username'], textContent: 'Pavithiran'}).render(),
-        new Comp('div', {classList: ['taskMaster'], textContent: 'TaskMaster'}).render()
+        new Comp('div', {classList: ['username'], textContent: 'Quiet2k'}).render(),
+        new Comp('div', {classList: ['taskmaster'], textContent: 'TaskMaster'}).render()
     )
+    const profilePicture = new Image(); profilePicture.src = profilePic; profilePicture.width = 50;
+    document.querySelector('.profile-picture').append(profilePicture);
 
     // Create 2 divs: quickLinksTitleContainer and projectsTitleContainer. Append them to quickLinksSection and projectsSection.
     // Create 2 divs: quickLinksBody and projectsBody. Append them to quickLinksSection and projectsSection.
@@ -44,16 +53,16 @@ export default function renderStaticContent(){
     );
     document.querySelector('.projects-title-container').append(
         new Comp('div', {classList: ['projects-title'], textContent: 'Projects'}).render(),
-        new Comp('button', {classList: ['add-btn'], textContent: '+'}).render()
+        new Comp('img', {classList: ['add-btn'], src: addBtn, width: 20}).render()
     );
 
     // Create 4 menu items: All tasks, Today, This Week, High Priority. Append all 4 to quickLinks section.
     const menuBody = document.querySelector('.menu-body');
     menuBody.append(
-        getMenuItem('All Tasks'),
-        getMenuItem('Today'),
-        getMenuItem('This Week'),
-        getMenuItem('High Priority'),
+        getMenuItem('All Tasks', tasksIcon),
+        getMenuItem('Today', todayIcon),
+        getMenuItem('This Week', weekIcon),
+        getMenuItem('High Priority', priorityIcon),
     );   
 }
 
