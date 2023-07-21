@@ -102,6 +102,7 @@ function toggleProjectItems(e){
     // document.querySelector('.projects-section')
 }
 
+// Add event listerners to menu item
 export function addEventListernersToMenuItems(app){
     // Get all menu item elements
     const menuItems = document.querySelectorAll('.menu-item');
@@ -110,7 +111,6 @@ export function addEventListernersToMenuItems(app){
             // Select the clicked item
             if(!menuItem.classList.contains('selected')){
                 menuItem.classList.add('selected');
-                console.log(menuItem)
                 if(index === 0) displayTodos("All Tasks", app.getAllTodos());
                 if(index === 1) displayTodos("Today", app.getDailyTodos());
                 if(index === 2) displayTodos("This Week", app.getWeeklyTodos());
@@ -122,6 +122,28 @@ export function addEventListernersToMenuItems(app){
                     item.classList.remove('selected');
                 }
             })
+            document.querySelectorAll('.project-item').forEach((item)=>{item.classList.remove('selected');})
+        });
+    });
+}
+
+// Add event listeners to project items
+export function addEventListernersToProjectItems(app){
+    const projectItems = document.querySelectorAll('.project-item');
+    projectItems.forEach((projectItem, index)=>{
+        projectItem.addEventListener('click', (e) => {
+            // Select the clicked item
+            if(!projectItem.classList.contains('selected')){
+                projectItem.classList.add('selected');
+                displayTodos(app.projects[index].title, app.projects[index].todos);
+            }
+            // Unselect all other menu items and project items
+            projectItems.forEach((item)=>{
+                if( item != projectItem ){
+                    item.classList.remove('selected');
+                }
+            })
+            document.querySelectorAll('.menu-item').forEach((item)=>{item.classList.remove('selected');})
         });
     });
 }

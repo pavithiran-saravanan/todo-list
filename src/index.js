@@ -2,7 +2,7 @@ import { createPriority } from "./priority";
 import Project from "./project";
 import { TodoApp } from "./todo-app";
 import './style.css';
-import renderStaticContent, { addEventListernersToMenuItems, populateProjects, testSVG } from "./dom-handler";
+import renderStaticContent, { addEventListernersToMenuItems, addEventListernersToProjectItems, populateProjects, testSVG } from "./dom-handler";
 
 localStorage.clear();
 renderStaticContent();
@@ -22,6 +22,7 @@ else{
 
 addEventListernersToMenuItems(myApp);
 populateProjects(myApp.projects.map((proj)=>{return proj.title}));
+addEventListernersToProjectItems(myApp);
 
 // myApp.deleteProject(0);
 // myApp.projects[0].deleteTodo(1);

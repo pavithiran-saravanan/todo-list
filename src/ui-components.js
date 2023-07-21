@@ -34,18 +34,17 @@ export function getSvgObject(src, className){
     return new Comp('object', {classList: [`${className}`], type : 'image/svg+xml', data: src, width: 40}).render();
 }
 
-export function getTodoItem(todo){
+export function getTodoItem(todo, mode='default'){
     const element = new Comp('div', {classList: ['todo-item']}).render();
 
     element.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
     element.append(new Comp('div', {classList: ['todo-title'], textContent: todo.title}).render());
-
     const dataContainer = new Comp('div', {classList: ['data-container']}).render();
     const buttonsContainer = new Comp('div', {classList: ['buttons-container']}).render();
     dataContainer.append(getPriorityElement(todo.priority), getDateElement(todo.dueDate));
     buttonsContainer.append(getEditButton(), getRemoveButton());
-    
     element.append(dataContainer, buttonsContainer);
+
     return element;
 }
 
