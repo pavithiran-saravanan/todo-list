@@ -20,7 +20,7 @@ export class TodoApp{
         this.#projects = projects;
     }
 
-    // Function to display projects
+    // Function to log projects to console
     displayProjects(){
         console.log('PROJECTS');
         if(this.projects.length === 0){

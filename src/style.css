@@ -13,13 +13,13 @@
     --color-accent: #504EAB;
     --color-accent-light: #E2E9FF;
 
+    /* Vibrant */
+    /* --color-accent: #504EAB;
+    --color-accent-light: #c3d1ff; */
+    
     /* Accent Green */
-    --color-accent: #439161;
-    --color-accent-light: #cce2d0;
-
-    /* Accent Orange */
-    --color-accent: #438c91;
-    --color-accent-light: #cce2dd;
+    /* --color-accent: #439161;
+    --color-accent-light: #cce2d0; */
 
     --color-accent-hover: #5856be;
 
@@ -60,26 +60,20 @@ body{
 }
 
 .sidebar{
-    width: 28%;
+    width: 27%;
     min-width: 350px;
     padding: 35px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     overflow-y: scroll;
+    user-select: none;
     /* Hide scrollbar */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
 }
 .sidebar::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
-}
-
-.main{
-    flex: 1;
-    display: flex;
-    justify-content: center;    
-    align-items: center;
 }
 
 /* Profile Section */
@@ -92,6 +86,9 @@ body{
     grid-template-rows: auto auto;
     column-gap: 18px;
     margin-bottom: 10px;
+
+    /* border: 2px solid var(--color-accent-light);
+    background-color: rgba(255, 255, 255, 0); */
 }
 
 .profile-picture{
@@ -190,7 +187,10 @@ body{
 }
 
 .selected{
-    
+    background-color: var(--color-accent-light);
+    /* border-color: var(--color-accent); */
+    color: var(--color-accent);
+    cursor:default;
 }
 
 .add-btn, .dropdown-btn{
@@ -214,4 +214,43 @@ body{
     width: 14px;
     /* color-grey */
     filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);
+}
+
+/* Main */
+
+.main{
+    flex: 1;
+    display: grid;
+    padding: 35px 45px;
+    align-content: start;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.main-title{
+    color: var(--color-grey);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.main-body{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    /* Set overflow to scroll and hide scroll bar */
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.main-body::-webkit-scrollbar { 
+    display: none;
+}
+
+.main-info{
+    display: grid;
+    height: 100%;
+    place-content: center;
 }
