@@ -3,9 +3,11 @@ import editIcon from './icons/edit-icon-round.svg';
 import removIcon from './icons/remove-icon-solid.svg';
 import tickIcon from './icons/tick-icon.svg';
 import format from 'date-fns/format';
+import { myApp } from '.';
+import { addEventListernersToMenuItems, addEventListernersToProjectItems } from './dom-handler';
 
-export default function getTodoItem(todo, id=0){
-    const element = new Comp('div', {classList: ['todo-item']}).render();
+export default function getTodoItem(todo, id, projectId){
+    const element = new Comp('div', {classList: ['todo-item']}).render(); element.setAttribute('data-index', todo.id); element.setAttribute('data-project-id', projectId);
 
     element.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
     element.append(new Comp('div', {classList: ['todo-title'], textContent: todo.title}).render());
@@ -62,5 +64,14 @@ function getRemoveButton(){
 }
 
 function deleteEventHandler(e){
-    console.log(e.target.parentElement.parentElement);
+    const parentIndex = e.target.parentElement.parentElement.getAttribute('data-project-id');
+    const taskIndex = e.target.parentElement.parentElement.getAttribute('data-index');
+    console.log(myApp.projects[parentIndex]);
+
+    // Delete the todo item from the data structure
+    myApp.projects[parentIndex].deleteTodo(taskIndex);
+    // Delete the todo item on display
+    e.target.parentElement.parentElement.remove();
+
+    console.log(myApp.projects[parentIndex]);
 };

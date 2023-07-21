@@ -16,6 +16,9 @@ export class TodoApp{
     get projects(){
         return this.#projects;
     }
+    set projects(arr){
+        this.#projects = arr;
+    }
     set projects(projects){
         this.#projects = projects;
     }
@@ -43,37 +46,42 @@ export class TodoApp{
     // Read from local
     readFromLocal(){
         if(localStorage.getItem(this.#key))
-            this.projects = this.reconstruct(localStorage.getItem(this.#key));
+            this.reconstruct(localStorage.getItem(this.#key));
         else return {};
     }
 
     // Reconstruct projects array from local storage
     reconstruct(proj){
-        const projects_re = [];
+        console.log('reconstructing..');
         const p = JSON.parse(proj).data;
         p.forEach((project) => {
+            console.log(p);
             const project_re = new Project(project.title, []);
-            const todos_re = [];
+            this.addProject(project_re);
             project.todos.forEach((todo)=>{
-                todos_re.push(new Todo(todo.title, todo.desc, todo.dueDate, todo.priority));
+                project_re.addTodo(new Todo(todo.title, todo.desc, new Date(todo.dueDate), todo.priority));
             })
-            project_re.todos = todos_re;
-            projects_re.push(project_re);
         });
-        return projects_re;
     }
 
     // Initialize with default projects
     initialize(){
         const todo1 = new Todo("Do Pushups", 'Do 3 sets of 10 pushups', new Date('2023', '06', '21'), createPriority(1));
         const todo2 = new Todo("Do Pullups", 'Do 1 set of 5 pullups', new Date('2023', '06', '20'), createPriority(2));
-        const project_workout = new Project("Workout", [todo1, todo2]);
+        const project_workout = new Project("Workout", []);
 
         const todo3 = new Todo("Learn JavaScript", 'Complete advanced JavaScript section from the Odin Project.', new Date('2023', '06', '18'), createPriority(1));
         const todo4 = new Todo("Learn React", 'Complete the new React section from the Odin Project.', new Date('2023', '06', '28'), createPriority(3));
-        const project_odin = new Project("The Odin Project", [todo3, todo4]);
+        const project_odin = new Project("The Odin Project", []);
 
-        this.projects = [project_workout, project_odin];
+        this.addProject(project_workout);
+        this.addProject(project_odin);
+
+        project_workout.addTodo(todo1);
+        project_workout.addTodo(todo2);
+        project_odin.addTodo(todo3);
+        project_odin.addTodo(todo4);
+        
         this.writeToLocal();
     }
 
@@ -133,6 +141,11 @@ export class TodoApp{
 
     // Add a new project
     addProject(project){
+        const len = this.#projects.length;
+        if(len === 0) project.id = this.#projects.length;
+        else{
+            project.id = this.#projects[len-1].id + 1;
+        }
         this.#projects.push(project);
         this.writeToLocal();
     }

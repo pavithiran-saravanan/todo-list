@@ -1,7 +1,7 @@
 
 export default class Todo {
     #id;
-    #project = "";
+    #project;
     #title;
     #desc;
     #dueDate;

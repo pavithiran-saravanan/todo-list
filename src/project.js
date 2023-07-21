@@ -1,5 +1,7 @@
+import { myApp } from ".";
 
 export default class Project {
+    #id;
     #title;
     #todos;
     #count = 0;
@@ -10,6 +12,9 @@ export default class Project {
     }
 
     // Getters and Setters
+    get id(){
+        return this.#id;
+    }
     get title(){
         return this.#title;
     }
@@ -18,6 +23,9 @@ export default class Project {
     }
     get count(){
         return this.#count;
+    }
+    set id(id){
+        this.#id = id;
     }
     set title(title){
         this.#title = title;
@@ -38,12 +46,24 @@ export default class Project {
 
     // Public Methods
     addTodo(todo){
+        // Set id value for the todo
+        const len = this.#todos.length;
+        if(len === 0) todo.id = 0;
+        else{
+            todo.id = this.#todos[len-1].id + 1;
+        }
+        
+        // Set project id for the todo
+        todo.project = this.#id;
         this.#todos.push(todo);
         this.#updateCount();
+        myApp.writeToLocal();
     }
 
     deleteTodo(index){
         this.#todos.splice(index, 1);
         this.#updateCount();
+        // Should update local storage
+        myApp.writeToLocal();
     }
 }

@@ -136,7 +136,7 @@ export function addEventListernersToProjectItems(app){
             // Select the clicked item
             if(!projectItem.classList.contains('selected')){
                 projectItem.classList.add('selected');
-                displayTodos(app.projects[index].title, app.projects[index].todos);
+                displayTodos(app.projects[index].title, app.projects[index].todos, index);
             }
             // Unselect all other menu items and project items
             projectItems.forEach((item)=>{
@@ -154,13 +154,13 @@ function getMenuTasks(menuIndex, app){
 };
 
 // Display's todos in main based on the menuItem selected
-function displayTodos(title, todos){
+function displayTodos(title, todos, projectId){
     document.querySelector('.main-title').textContent = title;
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
-    todos.forEach((todo)=>{
+    todos.forEach((todo, index)=>{
         // Call a function that returns an todo main element and append it to main
-        mainBody.append(getTodo(todo));
+        mainBody.append(getTodoItem(todo, index, todo.project));
     });
 };
 
@@ -183,11 +183,11 @@ function renderStaticMain(){
     );
 };
 
-function getTodo(todo){
-    return getTodoItem(todo);
-}
+// function getTodo(todo, index, getpro){
+//     return getTodoItem(todo, index);
+// }
 
-
-function deleteEventListener(){
-
-}
+export function selectAllTasks(app){
+    document.querySelector('.menu-item').classList.add('selected');
+    displayTodos("All Tasks", app.getAllTodos());
+};
