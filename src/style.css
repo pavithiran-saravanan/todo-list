@@ -12,14 +12,10 @@
 :root{
     --color-accent: #504EAB;
     --color-accent-light: #E2E9FF;
-
-    /* Vibrant */
-    /* --color-accent: #504EAB;
-    --color-accent-light: #c3d1ff; */
     
     /* Accent Green */
-    /* --color-accent: #439161;
-    --color-accent-light: #cce2d0; */
+    --color-accent: #439161;
+    --color-accent-light: #d7ecdb;
 
     --color-accent-hover: #5856be;
 
@@ -37,6 +33,11 @@
 
     --color-brick: #AB4E4E;
     --color-brick-light: #FFE2E2;
+
+     /* Vibrant */
+     /* --color-accent: #504EAB;
+     --color-accent-light: #d6dfff;
+     --color-grey: #000; */
 }
 
 body{

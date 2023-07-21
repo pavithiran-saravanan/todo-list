@@ -1,40 +1,10 @@
-import cancelIcon from  './icons/close-icon.svg';
+import Comp from './ui-components-sidebar';
 import editIcon from './icons/edit-icon-round.svg';
 import removIcon from './icons/remove-icon-solid.svg';
 import tickIcon from './icons/tick-icon.svg';
 import format from 'date-fns/format';
 
-// Generate simple dom elements with required properties while invoking constructor
-export default class Comp {
-    constructor(type, properties){
-        this.element = document.createElement(type);
-        if(properties === undefined) return;
-        for(const prop in properties){
-            this.element[prop] = properties[prop];
-        }
-    }
-    render = ()=>{return this.element};
-}
-
-export function getMenuItem(title, imgSrc){
-    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container menu-item`]}).render();
-    element.append(new Comp('img', {classList: ['menu-item-icon'], src: imgSrc, width: 25}).render());
-    element.append(new Comp('div', {classList: ['menu-item-text'], textContent: title}).render());
-    return element;
-}
-
-export function getProjectItem(title){
-    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container project-item`]}).render();
-    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title project-item-text`], textContent: title}).render());
-    element.append(new Comp('img', {classList: ['remove-project-btn btn'], src: cancelIcon, width: 10}).render());
-    return element;
-}
-
-export function getSvgObject(src, className){
-    return new Comp('object', {classList: [`${className}`], type : 'image/svg+xml', data: src, width: 40}).render();
-}
-
-export function getTodoItem(todo, mode='default'){
+export default function getTodoItem(todo, mode='default'){
     const element = new Comp('div', {classList: ['todo-item']}).render();
 
     element.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
@@ -88,4 +58,3 @@ function getRemoveButton(){
         }
     ).render()
 }
-

@@ -71,7 +71,7 @@ export class TodoApp{
 
         const todo3 = new Todo("Learn JavaScript", 'Complete advanced JavaScript section from the Odin Project.', new Date('2023', '06', '18'), createPriority(1));
         const todo4 = new Todo("Learn React", 'Complete the new React section from the Odin Project.', new Date('2023', '06', '28'), createPriority(3));
-        const project_odin = new Project("Odin", [todo3, todo4]);
+        const project_odin = new Project("The Odin Project", [todo3, todo4]);
 
         this.projects = [project_workout, project_odin];
         this.writeToLocal();

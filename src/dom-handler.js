@@ -1,4 +1,5 @@
-import Comp, { getMenuItem, getProjectItem, getTodoItem } from "./ui-components";
+import Comp, { getMenuItem, getProjectItem} from "./ui-components-sidebar";
+import getTodoItem from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
