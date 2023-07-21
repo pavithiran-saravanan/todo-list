@@ -136,7 +136,7 @@ body{
     font-weight: 500;
     color: var(--color-grey);
     font-size: 18px;
-    transition: all 0.3s;
+    transition: all 0.1s;
 }
 
 .menu-body, .projects-body{
@@ -144,8 +144,12 @@ body{
     flex-direction: column;
     gap: 10px;
     max-height: 300px;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.4s ease;
     overflow: hidden;
+}
+
+.projects-body{
+    max-height: 600px;
 }
 
 /* class to show and hide menu items*/
@@ -193,7 +197,7 @@ body{
     cursor:default;
 }
 
-.add-btn, .dropdown-btn{
+.add-btn{
     width: 27px;
     /* margin-top: -2px; */
     /* color-accent */
@@ -202,8 +206,16 @@ body{
     /* filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%); */
 }
 
-.dropdown-btn{
+.dropdown-btn, .dropdown-btn-projects{
     width: 25px;
+}
+
+.dropdown-btn-projects{
+}
+
+.add-mode{
+    width: 27px;
+    margin-right: -1px;
 }
 
 .expanded{
@@ -221,23 +233,24 @@ body{
 .main{
     flex: 1;
     display: grid;
-    padding: 35px 45px;
+    padding: 45px 55px;
     align-content: start;
     display: flex;
-    gap: 15px;
+    gap: 20px;
     flex-direction: column;
 }
 
 .main-title{
     color: var(--color-grey);
     font-weight: bold;
-    font-size: 40px;
+    font-size: 36px;
 }
 
 .main-body{
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 12px;
 
     /* Set overflow to scroll and hide scroll bar */
     overflow-y: scroll;
@@ -253,4 +266,84 @@ body{
     display: grid;
     height: 100%;
     place-content: center;
+}
+
+/* Todo Item */
+.todo-item{
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 20px;
+    align-content: center;
+    align-items: center;
+    padding: 20px 25px;
+    border: 2px solid var(--color-accent-light);
+    border-radius: 12px;
+}
+
+/* Buttons container */
+.buttons-container, .data-container{
+    display: flex;
+    gap: 20px;
+}
+
+.priority-container, .date-container{
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--color-accent-light);
+    padding: 8px 0px;
+    width: 140px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 100px;
+    text-align: center;
+}
+
+.priority-container{
+    width: 110px;
+}
+
+.priority-container[priority = 'low']{
+    color: var(--color-green);
+    border-color: var(--color-green);
+    background-color: var(--color-green-light);
+}
+
+.priority-container[priority = 'medium']{
+    color: var(--color-mustard);
+    border-color: var(--color-mustard);
+    background-color: var(--color-mustard-light);
+}
+
+.priority-container[priority = 'high']{
+    color: var(--color-brick);
+    border-color: var(--color-brick);
+    background-color: var(--color-brick-light);
+}
+
+.tick, .edit-button, .remove-button{
+    width: 28px;
+}
+
+.tick, .edit-button{
+    /* color-grey */
+    /* filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%); */
+
+    /* color-accent */
+    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+}
+
+.tick{
+    opacity: 10%;
+}
+
+.remove-button{
+    width: 31px;
+    /* color-red */
+    filter: invert(25%) sepia(75%) saturate(1020%) hue-rotate(325deg) brightness(130%) contrast(98%);
+}
+
+.todo-title{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-grey);
 }

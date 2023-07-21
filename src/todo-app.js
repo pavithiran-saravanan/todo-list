@@ -65,7 +65,7 @@ export class TodoApp{
 
     // Initialize with default projects
     initialize(){
-        const todo1 = new Todo("Do Pushups", 'Do 3 sets of 10 pushups', new Date('2023', '06', '18'), createPriority(1));
+        const todo1 = new Todo("Do Pushups", 'Do 3 sets of 10 pushups', new Date('2023', '06', '21'), createPriority(1));
         const todo2 = new Todo("Do Pullups", 'Do 1 set of 5 pullups', new Date('2023', '06', '20'), createPriority(2));
         const project_workout = new Project("Workout", [todo1, todo2]);
 

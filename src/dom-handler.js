@@ -1,9 +1,10 @@
-import Comp, { getMenuItem, getProjectItem } from "./ui-components";
+import Comp, { getMenuItem, getProjectItem, getTodoItem } from "./ui-components";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
 import profilePic from './images/stock-profile-2.jpg';
 import dropDown from './icons/dropdown-icon.svg';
+import { add } from "date-fns";
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
@@ -55,7 +56,7 @@ export default function renderStaticContent(){
     );
     document.querySelector('.projects-title-container').append(
         new Comp('div', {classList: ['projects-title'], textContent: 'Projects'}).render(),
-        new Comp('img', {classList: ['add-btn'], src: addBtn, width: 18}).render()
+        new Comp('img', {classList: ['dropdown-btn-projects add-mode'], src: addBtn, width: 20}).render()
     );
 
     // Create 4 menu items: All tasks, Today, This Week, High Priority. Append all 4 to quickLinks section.
@@ -67,9 +68,13 @@ export default function renderStaticContent(){
         getMenuItem('High Priority', tasksIcon),
     );   
 
-    // Add event listener to dropdown
+    // Add event listener to Menu dropdown
     const menuTitleContainer = document.querySelector('.menu-title-container');
     menuTitleContainer.addEventListener('click', toggleMenuItems);
+
+    // Add event listener to Menu dropdown
+    const projectsTitleContainer = document.querySelector('.projects-title-container');
+    projectsTitleContainer.addEventListener('click', toggleProjectItems);
 }
 
 // Get all project titles from myApp. Create a project item for each project title. Append all to projects section.
@@ -84,6 +89,16 @@ export function populateProjects(projectTitles){
 function toggleMenuItems(e){
     document.querySelector('.menu-body').classList.toggle('hide');
     document.querySelector('.dropdown-btn').classList.toggle('expanded');
+    // document.querySelector('.projects-section')
+}
+
+// Function to hide and unhide Project Links
+function toggleProjectItems(e){
+    document.querySelector('.projects-body').classList.toggle('hide');
+    const btn = document.querySelector('.dropdown-btn-projects');
+    btn.classList.toggle('add-mode');
+    if(btn.classList.contains('add-mode')) btn.src = addBtn;
+    else btn.src = dropDown;
     // document.querySelector('.projects-section')
 }
 
@@ -115,16 +130,19 @@ function getMenuTasks(menuIndex, app){
     if(menuIndex == 0) return;
 };
 
+// Display's todos in main based on the menuItem selected
 function displayTodos(title, todos){
-    const main = document.querySelector('.main');
-    main.textContent = '';
-    main.appendChild(new Comp('h1', {textContent: title}).render());
+    document.querySelector('.main-title').textContent = title;
+    const mainBody = document.querySelector('.main-body');
+    mainBody.textContent = '';
     todos.forEach((todo)=>{
         // Call a function that returns an todo main element and append it to main
-        main.appendChild(new Comp('div', {textContent: todo.title}).render());
+        mainBody.append(getTodo(todo));
     });
 };
 
+
+// Add basic structure to main
 function renderStaticMain(){
     const main = document.querySelector('.main');
     const mainTitleContainer = new Comp('div', {classList: ['main-title-container']}).render();
@@ -132,9 +150,15 @@ function renderStaticMain(){
 
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
     mainBody.append(new Comp('div', {classList: ['main-info'], textContent: 'No Projects to display'}).render());
-    
+
     main.append(
         mainTitleContainer,
         mainBody
     );
 };
+
+function getTodo(todo){
+    return getTodoItem(todo);
+}
+
+
