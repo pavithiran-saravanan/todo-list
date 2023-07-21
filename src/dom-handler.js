@@ -147,6 +147,9 @@ function renderStaticMain(){
     const main = document.querySelector('.main');
     const mainTitleContainer = new Comp('div', {classList: ['main-title-container']}).render();
     mainTitleContainer.append(new Comp('div', {classList: ['main-title'], textContent: 'All Tasks'}).render());
+    mainTitleContainer.append(
+        new Comp('img', {classList: ['add-todo-button'], src: addBtn, width: 40}).render()
+    )
 
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
     mainBody.append(new Comp('div', {classList: ['main-info'], textContent: 'No Projects to display'}).render());
