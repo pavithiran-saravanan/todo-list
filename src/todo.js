@@ -1,5 +1,6 @@
 
 export default class Todo {
+    #id;
     #project = "";
     #title;
     #desc;
@@ -14,6 +15,9 @@ export default class Todo {
         this.#priority = priority;
     }
     // Getters
+    get id(){
+        return this.#id;
+    }
     get title(){
         return this.#title;
     }
@@ -30,6 +34,9 @@ export default class Todo {
         return this.#project;
     }
     // Setters
+    set id(id){
+        this.#id = id;
+    }
     set title(title){
         this.#title = title;
     }

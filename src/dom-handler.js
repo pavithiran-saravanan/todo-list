@@ -188,3 +188,6 @@ function getTodo(todo){
 }
 
 
+function deleteEventListener(){
+
+}

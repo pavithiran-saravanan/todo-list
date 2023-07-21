@@ -4,7 +4,7 @@ import removIcon from './icons/remove-icon-solid.svg';
 import tickIcon from './icons/tick-icon.svg';
 import format from 'date-fns/format';
 
-export default function getTodoItem(todo, mode='default'){
+export default function getTodoItem(todo, id=0){
     const element = new Comp('div', {classList: ['todo-item']}).render();
 
     element.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
@@ -49,12 +49,18 @@ function getEditButton(){
 }
 
 function getRemoveButton(){
-    return new Comp(
+    const removeButton = new Comp(
         'img',
         {
             classList: ['remove-button'],
             src: removIcon,
             width: 20
         }
-    ).render()
+    ).render();
+    removeButton.addEventListener('click', deleteEventHandler);
+    return removeButton;
 }
+
+function deleteEventHandler(e){
+    console.log(e.target.parentElement.parentElement);
+};
