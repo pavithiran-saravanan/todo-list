@@ -14,8 +14,9 @@
     --color-accent-light: #E2E9FF;
     
     /* Accent Green */
-    --color-accent: #439161;
-    --color-accent-light: #d7ecdb;
+    --color-accent: #544391;
+    --color-accent-light: #e6d6ff;
+    --color-accent-lighter: #eeeaff83;
 
     --color-accent-hover: #5856be;
 
@@ -280,6 +281,12 @@ body{
     border: 2px solid var(--color-accent-light);
     border-radius: 12px;
     user-select: none;
+}
+.todo-item:hover{
+    background-color: var(--color-accent-lighter);
+}
+.view{
+    background-color: var(--color-accent-lighter)
 }
 
 .todo-item-main{
