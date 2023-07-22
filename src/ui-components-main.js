@@ -100,6 +100,7 @@ function getEditButton(){
 function editEventHandler(e){
     e.stopPropagation();
     const todoItem = e.target.parentElement.parentElement.parentElement; 
+    if(todoItem.querySelector('.tick').classList.contains('checked')) return;
     todoItem.classList.add('edit');
     todoItem.querySelector('.todo-item-main').classList.add('hidden');
     if(todoItem.querySelector('.description-container')) todoItem.querySelector('.description-container').classList.add('hidden');
@@ -207,7 +208,7 @@ function getCancelButton(){
 };
 
 function getTitleContainer(title){
-    const container = new Comp('div', {classList: ['edit-title-container']}).render();
+    const container = new Comp('div', {classList: ['edit-title-container edit-container']}).render();
     const label = new Comp('label', {classList: ['edit-label'], textContent: 'Title'}).render();
     const input = new Comp('input', {classList: ['edit-input'], type: 'text', textContent: title, value: title}).render();
     container.append(label, input);
@@ -215,7 +216,7 @@ function getTitleContainer(title){
 };
 
 function getPriorityContainer(priority){
-    const container = new Comp('div', {classList: ['edit-priority-container']}).render();
+    const container = new Comp('div', {classList: ['edit-priority-container edit-container']}).render();
     const label = new Comp('label', {classList: ['edit-label'],  textContent: 'Priority'}).render();
     const select = new Comp('select', {classList: ['edit-input edit-dropdown']}).render();
 
@@ -233,7 +234,7 @@ function getPriorityContainer(priority){
 };
 
 function getDateContainer(dueDate){
-    const container = new Comp('div', {classList: ['edit-date-container']}).render();
+    const container = new Comp('div', {classList: ['edit-date-container edit-container']}).render();
     const label = new Comp('label', {classList: ['edit-label'], textContent: 'Due Date'}).render();
     const input = new Comp('input', {classList: ['edit-input edit-date'], type: 'date', value: format(dueDate, 'yyyy-MM-dd')}).render();
     container.append(label, input);
@@ -241,7 +242,7 @@ function getDateContainer(dueDate){
 };
 
 function getDescriptionContainer(desc){
-    const container = new Comp('div', {classList: ['edit-description-container']}).render();
+    const container = new Comp('div', {classList: ['edit-description-container edit-container']}).render();
     const label = new Comp('label', {classList: ['edit-label'], textContent: 'Description'}).render();
     const input = new Comp('textarea', {classList: ['edit-input text-area'], textContent: desc, value: desc}).render();
     container.append(label, input);

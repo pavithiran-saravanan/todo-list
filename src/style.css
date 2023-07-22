@@ -8,17 +8,17 @@
     box-sizing: border-box;
 }
 
-/* Color variables */
-:root{
-    --color-accent: #504EAB;
-    --color-accent-light: #E2E9FF;
-    
-    /* Accent Green */
-    --color-accent: #544391;
-    --color-accent-light: #e6d6ff;
-    --color-accent-lighter: #eeeaff83;
+input {
+    all: unset;
+}
 
-    --color-accent-hover: #5856be;
+/* Color variables */
+:root{    
+    /* Accent New */
+    --color-accent: #4b4391;
+    --color-accent-hover: #5553b3;
+    --color-accent-light: #dad6ff;
+    --color-accent-lighter: #ebeaff83;
 
     --color-white: rgba(255, 255, 255, 0.7);
     --color-grey: #333;
@@ -34,11 +34,6 @@
 
     --color-brick: #AB4E4E;
     --color-brick-light: #FFE2E2;
-
-     /* Vibrant */
-     /* --color-accent: #504EAB;
-     --color-accent-light: #d6dfff;
-     --color-grey: #000; */
 }
 
 body{
@@ -406,4 +401,86 @@ body{
 
 .hidden{
     display: none;
+}
+
+/* Todo Edit Mode */
+.edit{
+    background-color: var(--color-accent-lighter);
+}
+
+.edit-form{
+    display: grid;
+    gap: 15px;
+    width: 95%;
+    margin: auto;
+    padding: 5px 0px;
+}
+
+.edit-form-1{
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 25px;
+}
+
+.edit-container{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.edit-container textarea{
+    resize: vertical;
+    min-height: 80px;
+    max-height: 300px;  
+    line-height: normal;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.edit-container textarea::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.edit-label{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.edit-input{
+    background: var(--color-accent-light);
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-family: 'poppins';
+    font-size: 15px;
+    outline: none;
+}
+
+.edit-input:focus{
+}
+
+.edit-form-3{
+    display: flex;
+    justify-content: end;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.btn-cancel, .btn-save{
+    background-color: var(--color-accent);
+    border-radius: 100px;
+    color: white;
+    padding: 12px 0px;
+    width: 100px;
+    font-weight: 600;
+    font-size: 15px;
+}
+.btn-save:hover{
+    background-color: var(--color-accent-hover);
+}
+
+.btn-cancel{
+    background-color: var(--color-red);
+}
+.btn-cancel:hover{
+    background-color: var(--color-red-hover);
 }
