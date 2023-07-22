@@ -15,10 +15,10 @@ input {
 /* Color variables */
 :root{    
     /* Accent New */
-    --color-accent: #4b4391;
-    --color-accent-hover: #5553b3;
-    --color-accent-light: #dad6ff;
-    --color-accent-lighter: #ebeaff83;
+    --color-accent: #434b91;
+    --color-accent-hover: #535db3;
+    --color-accent-light: #d6dcff;
+    --color-accent-lighter: #eaedff83;
 
     --color-white: rgba(255, 255, 255, 0.7);
     --color-grey: #333;
