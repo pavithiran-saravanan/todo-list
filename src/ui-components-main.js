@@ -100,6 +100,7 @@ function getEditButton(){
 
 function editEventHandler(e){
     e.stopPropagation();
+    document.querySelector('.add-todo-button').classList.add('hidden');
     const todoItem = e.target.parentElement.parentElement.parentElement; 
     if(todoItem.querySelector('.tick').classList.contains('checked')) return;
     todoItem.classList.add('edit');
@@ -218,6 +219,7 @@ function getSaveButton(){
         const updatedTodo = getTodoItem(obj, taskIndex, parentIndex);
         mainBody.insertBefore(updatedTodo, todo);
         todo.remove();
+        document.querySelector('.add-todo-button').classList.remove('hidden');
         myApp.displayProjects();
     });
     return saveBtn;
@@ -238,6 +240,7 @@ function getCancelButton(){
             todo.remove();
             document.querySelector('.add-todo-button').classList.remove('hidden');
         }
+        document.querySelector('.add-todo-button').classList.remove('hidden');
     });
     return cancel;
 };

@@ -166,6 +166,7 @@ function getMenuTasks(menuIndex, app){
 
 // Display's todos in main based on the menuItem selected
 export function displayTodos(title, todos, projectId){
+    console.log(title);
     document.querySelector('.main-title').textContent = title;
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
@@ -195,6 +196,10 @@ function renderStaticMain(){
 };
 
 export function selectAllTasks(app){
+    // Unselsect all other items
+    document.querySelectorAll('.project-item').forEach((item)=>{item.classList.remove('selected');})
+    document.querySelectorAll('.menu-item').forEach((item)=>{item.classList.remove('selected');})
+    
     document.querySelector('.menu-item').classList.add('selected');
     displayTodos("All Tasks", app.getAllTodos());
 };

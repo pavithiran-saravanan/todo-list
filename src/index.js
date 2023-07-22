@@ -5,7 +5,7 @@ import './style.css';
 import renderStaticContent, { addEventListernersToMenuItems, addEventListernersToProjectItems, populateProjects, selectAllTasks, testSVG } from "./dom-handler";
 import Todo from "./todo";
 
-localStorage.clear();
+// localStorage.clear();
 renderStaticContent();
 
 // Create myTodoApp

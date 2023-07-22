@@ -1,3 +1,5 @@
+import { myApp } from '.';
+import { selectAllTasks } from './dom-handler';
 import cancelIcon from  './icons/close-icon.svg';
 
 
@@ -23,11 +25,24 @@ export function getMenuItem(title, imgSrc){
 export function getProjectItem(title){
     const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container project-item`]}).render();
     element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title project-item-text`], textContent: title}).render());
-    element.append(new Comp('img', {classList: ['remove-project-btn btn'], src: cancelIcon, width: 10}).render());
-    return element;
-}
+    const removeBtn = new Comp('img', {classList: ['remove-project-btn btn'], src: cancelIcon, width: 10}).render();
+    element.append(removeBtn);
 
-export function getSvgObject(src, className){
-    return new Comp('object', {classList: [`${className}`], type : 'image/svg+xml', data: src, width: 40}).render();
+    removeBtn.addEventListener('click', e=>{
+        e.stopPropagation();
+        const parent = document.querySelector('.projects-body');
+
+        // Delete project from my app
+        const index = Array.from(parent.children).indexOf(element);
+        myApp.deleteProject(index);
+
+        selectAllTasks(myApp);
+
+        // Remove project item
+        element.remove();
+        console.log(parent);
+    });
+
+    return element;
 }
 
