@@ -403,3 +403,7 @@ body{
     text-decoration: line-through;
     /* pointer-events: none; */
 }
+
+.hidden{
+    display: none;
+}

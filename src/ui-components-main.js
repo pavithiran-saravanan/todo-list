@@ -42,9 +42,10 @@ export default function getTodoItem(todo, id, projectId){
         dataContainer.classList.toggle('ghost'); element.querySelector('.edit-button').classList.toggle('ghost'); 
     }
 
-    // Add click event handler
+    // Add click event handler to todo item
     element.addEventListener('click', e=>{
         if(!element.classList.contains('view')){
+            if(element.classList.contains('edit')) return;
             element.classList.add('view');
             // Logic to add description to todo item
             const container = new Comp('div', {classList: ['description-container']}).render();
@@ -83,14 +84,28 @@ function cap(text){
 };
 
 function getEditButton(){
-    return new Comp(
+    const editButton = new Comp(
         'img',
         {
             classList: ['edit-button'],
             src: editIcon,
             width: 20
         }
-    ).render()
+    ).render();
+    editButton.addEventListener('click', editEventHandler);
+    return editButton;
+}
+
+function editEventHandler(e){
+    e.stopPropagation();
+    const todoItem = e.target.parentElement.parentElement.parentElement; 
+    todoItem.classList.add('edit');
+    todoItem.querySelector('.todo-item-main').classList.add('hidden');
+    if(todoItem.querySelector('.description-container')) todoItem.querySelector('.description-container').classList.add('hidden');
+    const parentIndex = todoItem.getAttribute('data-project-id');
+    const taskIndex = todoItem.getAttribute('data-index');
+    const todo = myApp.projects[parentIndex].todos[taskIndex];
+    todoItem.append(getEditForm(todo));
 }
 
 function getRemoveButton(){
@@ -115,4 +130,86 @@ function deleteEventHandler(e){
     myApp.projects[parentIndex].deleteTodo(taskIndex);
     // Delete the todo item on display
     e.target.parentElement.parentElement.parentElement.remove();
+};
+
+function getEditForm(todo){
+    const form = new Comp('form', {classList: ['edit-form']}).render();
+    const section1 = new Comp('div', {classList: ['edit-form-1']}).render();
+    const section2 = new Comp('div', {classList: ['edit-form-2']}).render();
+    const section3 = new Comp('div', {classList: ['edit-form-3']}).render();
+    form.append(section1, section2, section3);
+
+    const titleContainer = getTitleContainer(todo.title); 
+    const priorityContainer = getPriorityContainer(todo.priority);
+    const dueDateContainer = getDateContainer(todo.dueDate);
+    section1.append(titleContainer, priorityContainer, dueDateContainer);
+
+    const descriptionContainer = getDescriptionContainer(todo.desc);
+    section2.append(descriptionContainer);
+
+    // Event Listeners have to be added to these
+    section3.append(getCancelButton());
+    return form;
+};
+
+function getSaveButton(){
+
+};
+
+function getCancelButton(){
+    const cancel = new Comp('button', {classList: ['todo-edit-btn btn-save'], textContent: 'Cancel'}).render();
+    cancel.addEventListener('click', e=>{
+        e.stopPropagation();
+        const todo = cancel.parentElement.parentElement.parentElement;
+        todo.classList.remove('edit');
+        // Remove form from todo item.
+        cancel.parentElement.parentElement.remove();
+        // Get back previously hidden divs
+        todo.querySelector('.todo-item-main').classList.remove('hidden');
+        if(todo.querySelector('.description-container')) todo.querySelector('.description-container').classList.remove('hidden');
+    });
+    return cancel;
+};
+
+function getTitleContainer(title){
+    const container = new Comp('div', {classList: ['edit-title-container']}).render();
+    const label = new Comp('label', {classList: ['edit-label'], textContent: 'Title'}).render();
+    const input = new Comp('input', {classList: ['edit-input'], type: 'text', textContent: title, value: title}).render();
+    container.append(label, input);
+    return container;
+};
+
+function getPriorityContainer(priority){
+    const container = new Comp('div', {classList: ['edit-priority-container']}).render();
+    const label = new Comp('label', {classList: ['edit-label'],  textContent: 'Priority'}).render();
+    const select = new Comp('select', {classList: ['edit-input edit-dropdown']}).render();
+
+    const items = ['Low', 'Medium', 'High'];
+    items.forEach((item, index) => {
+        const option = new Comp('option', {classList: ['priority-option'], value: item, textContent: item}).render();
+        if(priority.text === item.toLowerCase()){
+            console.log('match')
+            option.selected = true;
+        }
+        select.append(option);
+    })
+
+    container.append(label, select);
+    return container;
+};
+
+function getDateContainer(dueDate){
+    const container = new Comp('div', {classList: ['edit-date-container']}).render();
+    const label = new Comp('label', {classList: ['edit-label'], textContent: 'Due Date'}).render();
+    const input = new Comp('input', {classList: ['edit-input edit-date'], type: 'date', value: format(dueDate, 'yyyy-MM-dd')}).render();
+    container.append(label, input);
+    return container;
+};
+
+function getDescriptionContainer(desc){
+    const container = new Comp('div', {classList: ['edit-description-container']}).render();
+    const label = new Comp('label', {classList: ['edit-label'], textContent: 'Description'}).render();
+    const input = new Comp('textarea', {classList: ['edit-input text-area'], textContent: desc, value: desc}).render();
+    container.append(label, input);
+    return container;
 };
