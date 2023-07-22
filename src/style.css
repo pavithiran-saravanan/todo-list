@@ -276,14 +276,40 @@ body{
 
 /* Todo Item */
 .todo-item{
+    padding: 20px 25px;
+    border: 2px solid var(--color-accent-light);
+    border-radius: 12px;
+    user-select: none;
+}
+
+.todo-item-main{
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     gap: 20px;
     align-content: center;
     align-items: center;
-    padding: 20px 25px;
-    border: 2px solid var(--color-accent-light);
-    border-radius: 12px;
+}
+
+.description-container{
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.description-title{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-align: left;
+    display: none;
+}
+
+.description-body{
+    font-size: 15px;
+    border-top: 1px solid var(--color-accent-light);
+    /* border-radius: 11px; */
+    padding-top: 10px;
+    text-align: left;
 }
 
 /* Buttons container */

@@ -8,15 +8,34 @@ import { addEventListernersToMenuItems, addEventListernersToProjectItems } from 
 
 export default function getTodoItem(todo, id, projectId){
     const element = new Comp('div', {classList: ['todo-item']}).render(); element.setAttribute('data-index', todo.id); element.setAttribute('data-project-id', projectId);
+    const elementMain = new Comp('div', {classList: ['todo-item-main']}).render();
+    element.append(elementMain);
 
-    element.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
-    element.append(new Comp('div', {classList: ['todo-title'], textContent: todo.title}).render());
+    elementMain.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
+    elementMain.append(new Comp('div', {classList: ['todo-title'], textContent: todo.title}).render());
     const dataContainer = new Comp('div', {classList: ['data-container']}).render();
     const buttonsContainer = new Comp('div', {classList: ['buttons-container']}).render();
     dataContainer.append(getPriorityElement(todo.priority), getDateElement(todo.dueDate));
     buttonsContainer.append(getEditButton(), getRemoveButton());
-    element.append(dataContainer, buttonsContainer);
+    elementMain.append(dataContainer, buttonsContainer);
 
+    // Add on click event handler
+    element.addEventListener('click', e=>{
+        if(!element.classList.contains('view')){
+            element.classList.add('view');
+            // Logic to add description to todo item
+            const container = new Comp('div', {classList: ['description-container']}).render();
+            element.append(container);
+            container.append(
+                new Comp('div', {classList: ['description-title'], textContent: 'Description:'}).render(),
+                new Comp('div', {classList: ['description-body'], textContent: todo.desc}).render()
+            )
+        }
+        else{
+            element.classList.remove('view');
+            element.querySelector('.description-container').remove();
+        }
+    });
     return element;
 }
 
