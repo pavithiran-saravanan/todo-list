@@ -4,8 +4,9 @@ import removIcon from './icons/remove-icon-solid.svg';
 import tickIcon from './icons/tick-icon.svg';
 import format from 'date-fns/format';
 import { myApp } from '.';
-import { addEventListernersToMenuItems, addEventListernersToProjectItems } from './dom-handler';
+import { addEventListernersToMenuItems, addEventListernersToProjectItems, displayTodos } from './dom-handler';
 import { createPriority } from './priority';
+import Todo from './todo';
 
 export default function getTodoItem(todo, id, projectId){
     const element = new Comp('div', {classList: ['todo-item']}).render(); element.setAttribute('data-index', todo.id); element.setAttribute('data-project-id', projectId);
@@ -134,7 +135,7 @@ function deleteEventHandler(e){
     e.target.parentElement.parentElement.parentElement.remove();
 };
 
-function getEditForm(todo){
+export function getEditForm(todo){
     const form = new Comp('form', {classList: ['edit-form']}).render();
     const section1 = new Comp('div', {classList: ['edit-form-1']}).render();
     const section2 = new Comp('div', {classList: ['edit-form-2']}).render();
@@ -169,6 +170,27 @@ function getSaveButton(){
         const date = form.querySelector('.edit-date-container').querySelector('.edit-input').value;
         const description = form.querySelector('.edit-description-container').querySelector('.edit-input').value;
 
+        // Handle logic for new todo addition
+        if(!todo.querySelector('.todo-item-main') && !todo.querySelector('.description-container')){
+            const projectIndex = getIndexOfSelectedProject();
+            // Create new todo object with fetched data
+            const obj = new Todo(title, description, new Date(date), priority);
+
+            // Add the todo to project.
+            myApp.projects[projectIndex].addTodo(obj);
+
+            //  Trigger local save
+            myApp.writeToLocal();
+
+            // Rerender the todo elements
+            displayTodos(myApp.projects[projectIndex].title, myApp.projects[projectIndex].todos, projectIndex);
+
+            console.log(myApp.projects[projectIndex]);
+            todo.remove();
+            document.querySelector('.add-todo-button').classList.remove('hidden');
+            return;
+        }
+
         // Save data to todo object
         const parentIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-project-id');
         const taskIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
@@ -201,8 +223,12 @@ function getCancelButton(){
         // Remove form from todo item.
         cancel.parentElement.parentElement.remove();
         // Get back previously hidden divs
-        todo.querySelector('.todo-item-main').classList.remove('hidden');
+        if(todo.querySelector('.todo-item-main')) todo.querySelector('.todo-item-main').classList.remove('hidden');
         if(todo.querySelector('.description-container')) todo.querySelector('.description-container').classList.remove('hidden');
+        if(!todo.querySelector('.todo-item-main') && !todo.querySelector('.description-container')){
+            todo.remove();
+            document.querySelector('.add-todo-button').classList.remove('hidden');
+        }
     });
     return cancel;
 };
@@ -248,3 +274,16 @@ function getDescriptionContainer(desc){
     container.append(label, input);
     return container;
 };
+
+function getIndexOfSelectedProject(){
+    // Finding which dom element is currently selected
+    const projectItems = document.querySelectorAll('.project-item');
+    let index = 0;
+    projectItems.forEach((item, i) => {
+        if(item.classList.contains('selected')){
+            index = i;
+            return;
+        }
+    });
+    return index;
+}

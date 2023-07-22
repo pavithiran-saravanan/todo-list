@@ -6,6 +6,7 @@ import todayIcon from './icons/today-icon-outline.svg';
 import profilePic from './images/stock-profile-2.jpg';
 import dropDown from './icons/dropdown-icon.svg';
 import { add } from "date-fns";
+import { addTaskHandler } from "./new-task";
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
@@ -156,7 +157,7 @@ function getMenuTasks(menuIndex, app){
 };
 
 // Display's todos in main based on the menuItem selected
-function displayTodos(title, todos, projectId){
+export function displayTodos(title, todos, projectId){
     document.querySelector('.main-title').textContent = title;
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
@@ -175,7 +176,6 @@ function renderStaticMain(){
     mainTitleContainer.append(
         new Comp('img', {classList: ['add-todo-button hidden'], src: addBtn, width: 40}).render()
     )
-
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
     mainBody.append(new Comp('div', {classList: ['main-info'], textContent: 'No Projects to display'}).render());
 
@@ -183,6 +183,7 @@ function renderStaticMain(){
         mainTitleContainer,
         mainBody
     );
+    document.querySelector('.add-todo-button').addEventListener('click', addTaskHandler);
 };
 
 // function getTodo(todo, index, getpro){
