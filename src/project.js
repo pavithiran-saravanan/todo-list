@@ -47,11 +47,7 @@ export default class Project {
     // Public Methods
     addTodo(todo){
         // Set id value for the todo
-        const len = this.#todos.length;
-        if(len === 0) todo.id = 0;
-        else{
-            todo.id = this.#todos[len-1].id + 1;
-        }
+        todo.id = this.#todos.length;
         
         // Set project id for the todo
         todo.project = this.#id;

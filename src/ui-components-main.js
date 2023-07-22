@@ -129,10 +129,18 @@ function deleteEventHandler(e){
     const parentIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-project-id');
     const taskIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
 
-    // Delete the todo item from the data structure
-    myApp.projects[parentIndex].deleteTodo(taskIndex);
+    // myApp.projects[parentIndex].deleteTodo(taskIndex);
+    myApp.projects[parentIndex].todos.forEach((todo, index)=>{
+        if(todo.id == taskIndex){
+            console.log('found the todo object in the project');
+            myApp.projects[parentIndex].deleteTodo(index);
+            return;
+        }
+    });
+
     // Delete the todo item on display
     e.target.parentElement.parentElement.parentElement.remove();
+    myApp.displayProjects();
 };
 
 export function getEditForm(todo){
@@ -180,14 +188,14 @@ function getSaveButton(){
             myApp.projects[projectIndex].addTodo(obj);
 
             //  Trigger local save
-            myApp.writeToLocal();
+            // myApp.writeToLocal();
 
             // Rerender the todo elements
             displayTodos(myApp.projects[projectIndex].title, myApp.projects[projectIndex].todos, projectIndex);
 
-            console.log(myApp.projects[projectIndex]);
             todo.remove();
             document.querySelector('.add-todo-button').classList.remove('hidden');
+            myApp.displayProjects();
             return;
         }
 
@@ -210,6 +218,7 @@ function getSaveButton(){
         const updatedTodo = getTodoItem(obj, taskIndex, parentIndex);
         mainBody.insertBefore(updatedTodo, todo);
         todo.remove();
+        myApp.displayProjects();
     });
     return saveBtn;
 };

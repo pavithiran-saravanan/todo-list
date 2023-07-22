@@ -82,7 +82,6 @@ export default function renderStaticContent(){
 
     // Add event listener to add-mode
     if(document.querySelector('.add-mode')){
-        console.log(document.querySelector('.add-mode'));
         document.querySelector('.add-mode').addEventListener('click', addNewProjectHandler);
     }
 }
@@ -239,11 +238,11 @@ function addNewProjectHandler(e){
         myApp.addProject(proj);
 
         // Update project items
-        myApp.writeToLocal();
-
-        // Save to local storage
         populateProjects(myApp.projects.map((proj)=>{return proj.title}));
         addEventListernersToProjectItems(myApp);
+
+        // Save to local storage
+        myApp.writeToLocal();       
 
         document.querySelector('.projects-title-container').classList.remove('unclickable');
         btn.classList.remove('hidden');
@@ -251,5 +250,6 @@ function addNewProjectHandler(e){
 
         // Select the last added project item
         projectsBody.lastChild.click();
+        myApp.displayProjects();
     });
 };

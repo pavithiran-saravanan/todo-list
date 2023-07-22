@@ -3,6 +3,7 @@ import Project from "./project";
 import { TodoApp } from "./todo-app";
 import './style.css';
 import renderStaticContent, { addEventListernersToMenuItems, addEventListernersToProjectItems, populateProjects, selectAllTasks, testSVG } from "./dom-handler";
+import Todo from "./todo";
 
 localStorage.clear();
 renderStaticContent();
@@ -32,4 +33,5 @@ addEventListernersToMenuItems(myApp);
 populateProjects(myApp.projects.map((proj)=>{return proj.title}));
 addEventListernersToProjectItems(myApp);
 selectAllTasks(myApp);    
+myApp.displayProjects();
 
