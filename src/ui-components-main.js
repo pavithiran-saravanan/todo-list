@@ -5,6 +5,7 @@ import tickIcon from './icons/tick-icon.svg';
 import format from 'date-fns/format';
 import { myApp } from '.';
 import { addEventListernersToMenuItems, addEventListernersToProjectItems } from './dom-handler';
+import { createPriority } from './priority';
 
 export default function getTodoItem(todo, id, projectId){
     const element = new Comp('div', {classList: ['todo-item']}).render(); element.setAttribute('data-index', todo.id); element.setAttribute('data-project-id', projectId);
@@ -148,16 +149,50 @@ function getEditForm(todo){
     section2.append(descriptionContainer);
 
     // Event Listeners have to be added to these
-    section3.append(getCancelButton());
+    section3.append(getSaveButton(), getCancelButton());
     return form;
 };
 
 function getSaveButton(){
+    // Get details from form fields and update the todo object
+    const saveBtn = new Comp('button', {classList: ['todo-edit-btn btn-save'], textContent: 'Save'}).render();
+    saveBtn.addEventListener('click', e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        const todo = saveBtn.parentElement.parentElement.parentElement;
 
+        // Fetch data from form
+        const form = e.target.parentElement.parentElement;
+        const title = form.querySelector('.edit-title-container').querySelector('.edit-input').value;
+        const priority = createPriority(form.querySelector('.edit-priority-container').querySelector('.edit-input').value);
+        const date = form.querySelector('.edit-date-container').querySelector('.edit-input').value;
+        const description = form.querySelector('.edit-description-container').querySelector('.edit-input').value;
+
+        // Save data to todo object
+        const parentIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-project-id');
+        const taskIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
+        const obj = myApp.projects[parentIndex].todos[taskIndex];
+        obj.title = title; obj.priority = priority; obj.dueDate = new Date(date); obj.desc = description;
+
+        // Trigger save to local
+        myApp.writeToLocal();
+
+        // Remove the form and make prevously hidden sections appear
+        saveBtn.parentElement.parentElement.remove();
+        todo.querySelector('.todo-item-main').classList.remove('hidden');
+        if(todo.querySelector('.description-container')) todo.querySelector('.description-container').classList.remove('hidden');
+
+        // Refresh todoitems - we'll create a new todo item and append it before the current todo item and delete the current todo item
+        const mainBody = document.querySelector('.main-body');
+        const updatedTodo = getTodoItem(obj, taskIndex, parentIndex);
+        mainBody.insertBefore(updatedTodo, todo);
+        todo.remove();
+    });
+    return saveBtn;
 };
 
 function getCancelButton(){
-    const cancel = new Comp('button', {classList: ['todo-edit-btn btn-save'], textContent: 'Cancel'}).render();
+    const cancel = new Comp('button', {classList: ['todo-edit-btn btn-cancel'], textContent: 'Cancel'}).render();
     cancel.addEventListener('click', e=>{
         e.stopPropagation();
         const todo = cancel.parentElement.parentElement.parentElement;
@@ -188,7 +223,6 @@ function getPriorityContainer(priority){
     items.forEach((item, index) => {
         const option = new Comp('option', {classList: ['priority-option'], value: item, textContent: item}).render();
         if(priority.text === item.toLowerCase()){
-            console.log('match')
             option.selected = true;
         }
         select.append(option);
