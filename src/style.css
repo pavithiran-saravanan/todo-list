@@ -365,7 +365,14 @@ body{
 }
 
 .tick{
+    width: 32px;
     opacity: 10%;
+}
+.tick:hover{
+    opacity: 100%;
+}
+.checked{
+    opacity: 100%;
 }
 
 .remove-button{
@@ -378,4 +385,14 @@ body{
     font-size: 20px;
     font-weight: 600;
     color: var(--color-grey);
+}
+
+.strike{
+    text-decoration: line-through;
+}
+
+.ghost{
+    opacity: 20%;
+    text-decoration: line-through;
+    /* pointer-events: none; */
 }

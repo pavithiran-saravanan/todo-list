@@ -19,12 +19,36 @@ export default function getTodoItem(todo, id, projectId){
     buttonsContainer.append(getEditButton(), getRemoveButton());
     elementMain.append(dataContainer, buttonsContainer);
 
-    // Add on click event handler
+    // Add tick handler
+    const tick = element.querySelector('.tick');
+    tick.addEventListener('click', e=>{
+        tick.classList.toggle('checked');
+        element.querySelector('.todo-title').classList.toggle('strike');
+        dataContainer.classList.toggle('ghost'); element.querySelector('.edit-button').classList.toggle('ghost'); 
+
+        const desc = element.querySelector('.description-container');
+        if(desc) desc.classList.toggle('ghost');
+        e.stopPropagation();
+
+        // Toggle completion status
+        const projectId = element.getAttribute('data-project-id');
+        const id = element.getAttribute('data-index');
+        myApp.projects[projectId].todos[id].toggleCompletion();
+    });
+
+    if(todo.completed){
+        tick.classList.toggle('checked');
+        element.querySelector('.todo-title').classList.toggle('strike');
+        dataContainer.classList.toggle('ghost'); element.querySelector('.edit-button').classList.toggle('ghost'); 
+    }
+
+    // Add click event handler
     element.addEventListener('click', e=>{
         if(!element.classList.contains('view')){
             element.classList.add('view');
             // Logic to add description to todo item
             const container = new Comp('div', {classList: ['description-container']}).render();
+            if(tick.classList.contains('checked')) container.classList.add('ghost');
             element.append(container);
             container.append(
                 new Comp('div', {classList: ['description-title'], textContent: 'Description:'}).render(),
@@ -36,11 +60,11 @@ export default function getTodoItem(todo, id, projectId){
             element.querySelector('.description-container').remove();
         }
     });
+
     return element;
 }
 
 function getDateElement(dueDate){
-    // console.log();
     const container = new Comp('div', {classList: ['date-container']}).render();
     container.append( new Comp('div', {classList: ['date-text'], textContent: format(dueDate, 'dd-MM-yyyy')}).render());
     return container;
@@ -83,14 +107,12 @@ function getRemoveButton(){
 }
 
 function deleteEventHandler(e){
+    
     const parentIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-project-id');
     const taskIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
-    console.log(myApp.projects[parentIndex]);
 
     // Delete the todo item from the data structure
     myApp.projects[parentIndex].deleteTodo(taskIndex);
     // Delete the todo item on display
     e.target.parentElement.parentElement.parentElement.remove();
-
-    console.log(myApp.projects[parentIndex]);
 };
