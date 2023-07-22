@@ -9,7 +9,8 @@ export default class Todo {
     #isCompleted = false;
     // Consturctor
     constructor(title, desc, dueDate, priority) {
-        this.#title = title;
+        if(title === '') this.#title = 'No Title';
+        else this.#title = title;
         this.#desc = desc;
         this.#dueDate = dueDate;
         this.#priority = priority;

@@ -32,15 +32,4 @@ addEventListernersToMenuItems(myApp);
 populateProjects(myApp.projects.map((proj)=>{return proj.title}));
 addEventListernersToProjectItems(myApp);
 selectAllTasks(myApp);    
-// console.log(myApp.projects[0].id);
-
-// myApp.deleteProject(0);
-// myApp.projects[0].deleteTodo(1);
-// myApp.addProject(new Project('Full Stack Open', []));
-// myApp.displayProjects();
-
-// console.log("All tasks: "); console.log(myApp.getAllTodos().map(todo=>todo.title));
-// console.log("High Priority tasks: "); console.log(myApp.getPriorityTodos(3).map(todo=>todo.title));
-// console.log("Today's tasks: "); console.log(myApp.getDailyTodos().map(todo=>todo.title));
-// console.log("Week's tasks: "); console.log(myApp.getWeeklyTodos().map(todo=>todo.title));
 

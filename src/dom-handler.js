@@ -7,6 +7,8 @@ import profilePic from './images/stock-profile-2.jpg';
 import dropDown from './icons/dropdown-icon.svg';
 import { add } from "date-fns";
 import { addTaskHandler } from "./new-task";
+import { myApp } from ".";
+import Project from "./project";
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
@@ -53,7 +55,7 @@ export default function renderStaticContent(){
 
     // Create 2 titles: Quick Links and Projects. Append quick links to menu section. Append Projects title and 'add project' button to projectsTitleContainer.
     document.querySelector('.menu-title-container').append(
-        new Comp('div', {classList: ['menu-title'], textContent: 'Quick Links'}).render(),
+        new Comp('div', {classList: ['menu-title'], textContent: 'Quick Views'}).render(),
         new Comp('img', {classList: ['dropdown-btn expanded'], src: dropDown, width: 20}).render()
     );
     document.querySelector('.projects-title-container').append(
@@ -74,14 +76,21 @@ export default function renderStaticContent(){
     const menuTitleContainer = document.querySelector('.menu-title-container');
     menuTitleContainer.addEventListener('click', toggleMenuItems);
 
-    // Add event listener to Menu dropdown
+    // Add event listener to Projects dropdown
     const projectsTitleContainer = document.querySelector('.projects-title-container');
     projectsTitleContainer.addEventListener('click', toggleProjectItems);
+
+    // Add event listener to add-mode
+    if(document.querySelector('.add-mode')){
+        console.log(document.querySelector('.add-mode'));
+        document.querySelector('.add-mode').addEventListener('click', addNewProjectHandler);
+    }
 }
 
 // Get all project titles from myApp. Create a project item for each project title. Append all to projects section.
 export function populateProjects(projectTitles){
     const projectsBody = document.querySelector('.projects-body');
+    projectsBody.textContent = '';
     for(const title of projectTitles){
         projectsBody.append(getProjectItem(title));
     }
@@ -186,11 +195,58 @@ function renderStaticMain(){
     document.querySelector('.add-todo-button').addEventListener('click', addTaskHandler);
 };
 
-// function getTodo(todo, index, getpro){
-//     return getTodoItem(todo, index);
-// }
-
 export function selectAllTasks(app){
     document.querySelector('.menu-item').classList.add('selected');
     displayTodos("All Tasks", app.getAllTodos());
+};
+
+function addNewProjectHandler(e){
+    e.stopPropagation();
+    // When the menu is collapsed, cannot add new project
+    if(!document.querySelector('.add-mode')){
+        // Call the function to expand menu
+        toggleProjectItems();
+        return;
+    };
+    document.querySelector('.projects-title-container').classList.add('unclickable');
+
+    // Hide the add button
+    const btn = e.target;
+    btn.classList.add('hidden');
+
+    // Append a div containing input field and 2 buttons to projects body
+    const projectsBody = document.querySelector('.projects-body');
+    const container = new Comp('div', {classList: ['new-project-container']}).render();
+    const input = new Comp('input', {classList: ['new-project-input'], type: 'text'}).render();
+    const buttons = new Comp('div', {classList: ['new-project-buttons']}).render();
+    const cancel = new Comp('button', {classList: ['new-project-button new-project-button-cancel'], textContent: 'Cancel'}).render();
+    const add = new Comp('button', {classList: ['new-project-button new-project-button-add'], textContent: 'Add'}).render();
+    buttons.append(cancel, add);
+    container.append(input, buttons);
+    projectsBody.append(container);
+    input.focus();
+
+    cancel.addEventListener('click', e=>{
+        document.querySelector('.projects-title-container').classList.remove('unclickable');
+        btn.classList.remove('hidden');
+        container.remove();
+    });
+
+    add.addEventListener('click', e=>{
+        // Add the new project to the app
+        const titleInput = input.value === ''? 'No Name': input.value;
+        const proj = new Project(titleInput, []);
+        myApp.addProject(proj);
+
+        // Update project items
+        myApp.writeToLocal();
+
+        // Save to local storage
+        populateProjects(myApp.projects.map((proj)=>{return proj.title}));
+        addEventListernersToProjectItems(myApp);
+
+        document.querySelector('.projects-title-container').classList.remove('unclickable');
+        btn.classList.remove('hidden');
+        container.remove();
+    });
 };

@@ -484,3 +484,49 @@ body{
 .btn-cancel:hover{
     background-color: var(--color-red-hover);
 }
+
+.unclickable{
+    pointer-events: none;
+}
+
+/* New Project */
+.new-project-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.new-project-input{
+    /* background-color: var(--color-accent-light); */
+    border: 2px solid var(--color-accent-light);
+    font-size: 18px;
+    border-radius: 12px;
+    padding: 12px 20px;
+}
+
+.new-project-buttons{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+}
+
+.new-project-button{
+    background-color: var(--color-accent);
+    border-radius: 10px;
+    color: white;
+    padding: 12px 0px;
+    width: 100px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.new-project-button-cancel{
+    background-color: var(--color-red);
+}
+.new-project-button-add:hover{
+    background-color: var(--color-accent-hover);
+}
+.new-project-button-cancel:hover{
+    background-color: var(--color-red-hover);
+}
