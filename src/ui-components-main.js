@@ -83,14 +83,14 @@ function getRemoveButton(){
 }
 
 function deleteEventHandler(e){
-    const parentIndex = e.target.parentElement.parentElement.getAttribute('data-project-id');
-    const taskIndex = e.target.parentElement.parentElement.getAttribute('data-index');
+    const parentIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-project-id');
+    const taskIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
     console.log(myApp.projects[parentIndex]);
 
     // Delete the todo item from the data structure
     myApp.projects[parentIndex].deleteTodo(taskIndex);
     // Delete the todo item on display
-    e.target.parentElement.parentElement.remove();
+    e.target.parentElement.parentElement.parentElement.remove();
 
     console.log(myApp.projects[parentIndex]);
 };
