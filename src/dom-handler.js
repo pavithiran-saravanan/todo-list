@@ -248,5 +248,8 @@ function addNewProjectHandler(e){
         document.querySelector('.projects-title-container').classList.remove('unclickable');
         btn.classList.remove('hidden');
         container.remove();
+
+        // Select the last added project item
+        projectsBody.lastChild.click();
     });
 };
