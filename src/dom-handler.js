@@ -109,6 +109,7 @@ export function addEventListernersToMenuItems(app){
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach((menuItem, index)=>{
         menuItem.addEventListener('click', (e) => {
+            document.querySelector('.add-todo-button').classList.add('hidden');
             // Select the clicked item
             if(!menuItem.classList.contains('selected')){
                 menuItem.classList.add('selected');
@@ -133,6 +134,7 @@ export function addEventListernersToProjectItems(app){
     const projectItems = document.querySelectorAll('.project-item');
     projectItems.forEach((projectItem, index)=>{
         projectItem.addEventListener('click', (e) => {
+            document.querySelector('.add-todo-button').classList.remove('hidden');
             // Select the clicked item
             if(!projectItem.classList.contains('selected')){
                 projectItem.classList.add('selected');
@@ -171,7 +173,7 @@ function renderStaticMain(){
     const mainTitleContainer = new Comp('div', {classList: ['main-title-container']}).render();
     mainTitleContainer.append(new Comp('div', {classList: ['main-title'], textContent: 'All Tasks'}).render());
     mainTitleContainer.append(
-        new Comp('img', {classList: ['add-todo-button'], src: addBtn, width: 40}).render()
+        new Comp('img', {classList: ['add-todo-button hidden'], src: addBtn, width: 40}).render()
     )
 
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
