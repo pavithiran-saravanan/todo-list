@@ -231,8 +231,12 @@ body{
 /* Main */
 
 .main-title-container{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 30px;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 .main{
@@ -249,6 +253,17 @@ body{
     color: var(--color-grey);
     font-weight: bold;
     font-size: 36px;
+}
+
+.main-title-input{
+    color: var(--color-grey);
+    background-color: var(--color-accent-light);
+    font-weight: bold;
+    font-size: 26px;
+    min-width: 100px;
+    border-radius: 14px;
+    padding: 14px 0px;
+    padding-left: 24px;
 }
 
 .main-body{

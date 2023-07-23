@@ -5,6 +5,8 @@ import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
 import profilePic from './images/stock-profile-2.jpg';
 import dropDown from './icons/dropdown-icon.svg';
+import editIcon from './icons/edit-icon-square.svg';
+import tickIcon from './icons/tick-icon.svg';
 import { add } from "date-fns";
 import { addTaskHandler } from "./new-task";
 import { myApp } from ".";
@@ -119,6 +121,7 @@ export function addEventListernersToMenuItems(app){
     menuItems.forEach((menuItem, index)=>{
         menuItem.addEventListener('click', (e) => {
             document.querySelector('.add-todo-button').classList.add('hidden');
+            document.querySelector('.edit-title-button').classList.add('hidden');
             // Select the clicked item
             if(!menuItem.classList.contains('selected')){
                 menuItem.classList.add('selected');
@@ -144,6 +147,7 @@ export function addEventListernersToProjectItems(app){
     projectItems.forEach((projectItem, index)=>{
         projectItem.addEventListener('click', (e) => {
             document.querySelector('.add-todo-button').classList.remove('hidden');
+            document.querySelector('.edit-title-button').classList.remove('hidden');
             // Select the clicked item
             if(!projectItem.classList.contains('selected')){
                 projectItem.classList.add('selected');
@@ -184,7 +188,13 @@ function renderStaticMain(){
     const main = document.querySelector('.main');
     const mainTitleContainer = new Comp('div', {classList: ['main-title-container']}).render();
     mainTitleContainer.append(new Comp('div', {classList: ['main-title'], textContent: 'All Tasks'}).render());
-    mainTitleContainer.append(
+
+    // Add an edit button
+    const edit = new Comp('img', {classList: ['edit-title-button hidden'], src: editIcon, width: 30}).render();
+    
+    mainTitleContainer.append(edit);
+
+    mainTitleContainer.append(  
         new Comp('img', {classList: ['add-todo-button hidden'], src: addBtn, width: 40}).render()
     )
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
@@ -195,6 +205,7 @@ function renderStaticMain(){
         mainBody
     );
     document.querySelector('.add-todo-button').addEventListener('click', addTaskHandler);
+    edit.addEventListener('click', editTitleHandler);
 };
 
 export function selectAllTasks(app){
@@ -264,4 +275,52 @@ function addNewProjectHandler(e){
         projectsBody.lastChild.click();
         myApp.displayProjects();
     });
+};
+
+function editTitleHandler(e){
+    const btn = e.target;
+
+    const mainTitleContainer = document.querySelector('.main-title-container');
+    const mainTitle = document.querySelector('.main-title');
+
+    // If btn is in save mode
+    if(btn.classList.contains('save-mode')){
+
+        // Unhide Main Title
+        mainTitle.textContent = mainTitleContainer.querySelector('.main-title-input').value;
+        mainTitle.classList.remove('hidden');
+
+        // Update the selectedMenuItem in sidebar
+        const projects = document.querySelectorAll('.project-item');
+        projects.forEach((project, index) => {
+            if(project.classList.contains('selected')){
+                project.querySelector('.project-item-text').textContent = mainTitle.textContent;
+                myApp.projects[index].title = mainTitle.textContent;
+                myApp.writeToLocal();
+                return;
+            }
+        });
+
+        // Remove Input Box
+        mainTitleContainer.querySelector('.main-title-input').remove();
+
+        // Remove save mode class and change src back to edit
+        btn.classList.remove('save-mode');
+        btn.src = editIcon;
+        return;
+    };
+
+    // Create an input div
+    const input = new Comp('input', {classList: ['main-title-input'], type: 'text', value: mainTitle.textContent}).render();
+
+    // Hide Main Title
+    mainTitle.classList.add('hidden');
+
+    // Show input in it's place
+    mainTitleContainer.insertBefore(input, mainTitleContainer.firstChild);
+    input.focus();
+
+    // Change the src image to save, add a class of savemode
+    btn.classList.add('save-mode');
+    btn.src = tickIcon;
 };
