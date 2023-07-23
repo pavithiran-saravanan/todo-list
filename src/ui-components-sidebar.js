@@ -40,9 +40,13 @@ export function getProjectItem(title){
 
         // Remove project item
         element.remove();
-        console.log(parent);
+        if(document.querySelector('.projects-body').childElementCount === 0) document.querySelector('.projects-body').append(getProjectsInfo());
     });
 
     return element;
 }
+
+export function getProjectsInfo(){
+    return new Comp('div', {classList: ['projects-info'], textContent: 'No projects to display'}).render();
+};
 

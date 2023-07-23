@@ -535,3 +535,10 @@ body{
 .new-project-button-cancel:hover{
     background-color: var(--color-red-hover);
 }
+
+
+.projects-info{
+    height: 80px;
+    display: grid;
+    place-content: center;
+}

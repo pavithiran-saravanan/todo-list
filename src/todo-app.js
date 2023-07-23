@@ -55,7 +55,6 @@ export class TodoApp{
         console.log('reconstructing..');
         const p = JSON.parse(proj).data;
         p.forEach((project) => {
-            console.log(p);
             const project_re = new Project(project.title, []);
             this.addProject(project_re);
             project.todos.forEach((todo)=>{

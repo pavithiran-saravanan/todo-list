@@ -133,7 +133,6 @@ function deleteEventHandler(e){
     // myApp.projects[parentIndex].deleteTodo(taskIndex);
     myApp.projects[parentIndex].todos.forEach((todo, index)=>{
         if(todo.id == taskIndex){
-            console.log('found the todo object in the project');
             myApp.projects[parentIndex].deleteTodo(index);
             return;
         }
@@ -142,7 +141,6 @@ function deleteEventHandler(e){
     // Delete the todo item on display
     e.target.parentElement.parentElement.parentElement.remove();
     if(document.querySelector('.main-body').childElementCount === 0) document.querySelector('.main-body').append(getMainInfo());
-    // myApp.displayProjects();
 };
 
 export function getEditForm(todo){
@@ -197,7 +195,6 @@ function getSaveButton(){
 
             todo.remove();
             document.querySelector('.add-todo-button').classList.remove('hidden');
-            myApp.displayProjects();
             return;
         }
 
@@ -221,7 +218,6 @@ function getSaveButton(){
         mainBody.insertBefore(updatedTodo, todo);
         todo.remove();
         document.querySelector('.add-todo-button').classList.remove('hidden');
-        myApp.displayProjects();
     });
     return saveBtn;
 };
@@ -305,3 +301,4 @@ function getIndexOfSelectedProject(){
 export function getMainInfo(){
     return new Comp('div', {classList: ['main-info'], textContent: 'No tasks to display'}).render();
 };
+

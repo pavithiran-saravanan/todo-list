@@ -1,4 +1,4 @@
-import Comp, { getMenuItem, getProjectItem} from "./ui-components-sidebar";
+import Comp, { getMenuItem, getProjectItem, getProjectsInfo} from "./ui-components-sidebar";
 import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
@@ -166,7 +166,6 @@ function getMenuTasks(menuIndex, app){
 
 // Display's todos in main based on the menuItem selected
 export function displayTodos(title, todos, projectId){
-    console.log(title);
     document.querySelector('.main-title').textContent = title;
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
@@ -233,10 +232,15 @@ function addNewProjectHandler(e){
     projectsBody.append(container);
     input.focus();
 
+    // Remove no projects placeholder if any
+    if(projectsBody.querySelector('.projects-info')) projectsBody.querySelector('.projects-info').remove();
+
     cancel.addEventListener('click', e=>{
         document.querySelector('.projects-title-container').classList.remove('unclickable');
         btn.classList.remove('hidden');
         container.remove();
+        // Remove no projects placeholder if any
+        if(projectsBody.childElementCount === 0) projectsBody.append(getProjectsInfo());
     });
 
     add.addEventListener('click', e=>{
