@@ -170,6 +170,9 @@ export function displayTodos(title, todos, projectId){
     document.querySelector('.main-title').textContent = title;
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
+    if(todos.length == 0){
+        mainBody.append(new Comp('div', {classList: ['main-info'], textContent: 'No tasks to display'}).render());
+    }
     todos.forEach((todo, index)=>{
         // Call a function that returns an todo main element and append it to main
         mainBody.append(getTodoItem(todo, index, todo.project));
@@ -199,7 +202,7 @@ export function selectAllTasks(app){
     // Unselsect all other items
     document.querySelectorAll('.project-item').forEach((item)=>{item.classList.remove('selected');})
     document.querySelectorAll('.menu-item').forEach((item)=>{item.classList.remove('selected');})
-    
+
     document.querySelector('.menu-item').classList.add('selected');
     displayTodos("All Tasks", app.getAllTodos());
 };

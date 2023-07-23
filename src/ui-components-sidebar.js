@@ -1,6 +1,6 @@
 import { myApp } from '.';
 import { selectAllTasks } from './dom-handler';
-import cancelIcon from  './icons/close-icon.svg';
+import cancelIcon from  './icons/delete-icon.svg';
 
 
 // Generate simple dom elements with required properties while invoking constructor
