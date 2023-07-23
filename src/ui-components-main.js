@@ -13,7 +13,7 @@ export default function getTodoItem(todo, id, projectId){
     const elementMain = new Comp('div', {classList: ['todo-item-main']}).render();
     element.append(elementMain);
 
-    elementMain.append(new Comp('img', {classList: ['tick'], src: tickIcon, width: 20}).render());
+    elementMain.append(new Comp('img', {classList: ['tick svg'], src: tickIcon, width: 20}).render());
     elementMain.append(new Comp('div', {classList: ['todo-title'], textContent: todo.title}).render());
     const dataContainer = new Comp('div', {classList: ['data-container']}).render();
     const buttonsContainer = new Comp('div', {classList: ['buttons-container']}).render();
@@ -89,7 +89,7 @@ function getEditButton(){
     const editButton = new Comp(
         'img',
         {
-            classList: ['edit-button'],
+            classList: ['edit-button svg-accent'],
             src: editIcon,
             width: 20
         }

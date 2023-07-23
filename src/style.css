@@ -8,10 +8,6 @@
     box-sizing: border-box;
 }
 
-input {
-    all: unset;
-}
-
 /* Color variables */
 :root{    
     /* Accent New */
@@ -39,6 +35,52 @@ input {
 body{
     font-family: 'poppins';
     height: 100vh;
+}
+
+.dark{
+    --color-red: #b13a3a;
+    --color-red-hover: #e64f4f;
+
+    --color-green: #50AB4E;
+    --color-green-light: #18171b81;
+
+    --color-mustard: #ABA24E;
+    --color-mustard-light: #18171b81;
+
+    --color-brick: #AB4E4E;
+    --color-brick-light: #18171b81;
+}
+
+body[accent = 'purple-dark']{
+    /* Changed */
+    --color-white: #26262e; /* Card Color */
+    --color-grey: #ffffff; /* Font Color */
+    --color-accent-light: #18171b;  /* Background and highlights*/
+    --color-accent-lighter: #16151a28; /* Todo item effect */
+
+    --color-accent: #616cd1;
+    --color-accent-hover: #7683f7;
+}
+
+body[accent = 'purple-dark'] .svg{
+    /* White */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(330deg) brightness(101%) contrast(106%);
+}
+
+body[accent = 'purple-dark'] .svg-accent, body[accent = 'purple-dark'] .tick{
+    /* Accent */
+    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+}
+
+body[accent = 'purple-dark'] .remove-project-btn:hover, body[accent = 'purple-dark'] .remove-button{
+    /* Red */
+    filter: invert(25%) sepia(75%) saturate(1020%) hue-rotate(325deg) brightness(130%) contrast(98%);
+}
+
+
+input {
+    all: unset;
+    color: var(--color-grey);
 }
 
 #content{
@@ -81,26 +123,29 @@ body{
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
-    column-gap: 18px;
+    column-gap: 16px;
     margin-bottom: 10px;
-
-    /* border: 2px solid var(--color-accent-light);
-    background-color: rgba(255, 255, 255, 0); */
 }
 
 .profile-picture{
     width: 60px;
     height: 60px;
+    display: grid;
+
+    place-content: center;
+    place-items: center;
+
+    /* border: 1px solid var(--color-accent); */
     border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     overflow: hidden;
     grid-row: 1/-1;
 }
 
 .profile-picture img {
-    width: 100%;
+    width: 85%;
+    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%); /* Grey */
+    /* filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);  */
 }
 
 .username, .menu-title, .projects-title{
@@ -182,7 +227,6 @@ body{
 
 .project-item:hover, .menu-item:hover{
     background-color: var(--color-accent-light);
-    /* border-color: var(--color-accent); */
     color: var(--color-accent);
     cursor:default;
 }
@@ -196,11 +240,6 @@ body{
 
 .add-btn{
     width: 27px;
-    /* margin-top: -2px; */
-    /* color-accent */
-    /* filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%); */
-    /* color-grey */
-    /* filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%); */
 }
 
 .dropdown-btn, .dropdown-btn-projects{
@@ -271,6 +310,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 12px;
+    transition: all 1s;
 
     /* Set overflow to scroll and hide scroll bar */
     overflow-y: scroll;
@@ -316,6 +356,7 @@ body{
     width: 95%;
     margin: auto;
     margin-top: 20px;
+    color: var(--color-grey);
 }
 
 .description-title{
@@ -440,6 +481,7 @@ body{
     display: grid;
     grid-template-columns: 1fr auto auto;
     gap: 25px;
+    color: var(--color-grey);
 }
 
 .edit-container{
@@ -464,6 +506,7 @@ body{
 .edit-label{
     font-weight: 500;
     font-size: 16px;
+    color: var(--color-grey);
 }
 
 .edit-input{
@@ -473,6 +516,7 @@ body{
     font-family: 'poppins';
     font-size: 15px;
     outline: none;
+    color: var(--color-grey);
 }
 
 .edit-input:focus{
@@ -551,9 +595,9 @@ body{
     background-color: var(--color-red-hover);
 }
 
-
 .projects-info{
     height: 80px;
     display: grid;
     place-content: center;
+    color: var(--color-grey);
 }

@@ -17,7 +17,7 @@ export default class Comp {
 
 export function getMenuItem(title, imgSrc){
     const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container menu-item`]}).render();
-    element.append(new Comp('img', {classList: ['menu-item-icon'], src: imgSrc, width: 25}).render());
+    element.append(new Comp('img', {classList: ['menu-item-icon svg'], src: imgSrc, width: 25}).render());
     element.append(new Comp('div', {classList: ['menu-item-text'], textContent: title}).render());
     return element;
 }
@@ -25,7 +25,7 @@ export function getMenuItem(title, imgSrc){
 export function getProjectItem(title){
     const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container project-item`]}).render();
     element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title project-item-text`], textContent: title}).render());
-    const removeBtn = new Comp('img', {classList: ['remove-project-btn btn'], src: cancelIcon, width: 10}).render();
+    const removeBtn = new Comp('img', {classList: ['remove-project-btn btn svg'], src: cancelIcon, width: 10}).render();
     element.append(removeBtn);
 
     removeBtn.addEventListener('click', e=>{

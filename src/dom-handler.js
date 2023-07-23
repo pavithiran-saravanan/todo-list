@@ -3,7 +3,7 @@ import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
-import profilePic from './images/stock-profile-2.jpg';
+import profilePic from './icons/dark-light-2.svg';
 import dropDown from './icons/dropdown-icon.svg';
 import editIcon from './icons/edit-icon-square.svg';
 import tickIcon from './icons/tick-icon.svg';
@@ -11,6 +11,7 @@ import { add } from "date-fns";
 import { addTaskHandler } from "./new-task";
 import { myApp } from ".";
 import Project from "./project";
+import { toggleTheme } from "./theme";
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
@@ -40,7 +41,9 @@ export default function renderStaticContent(){
         new Comp('div', {classList: ['taskmaster'], textContent: 'TaskMaster'}).render()
     )
     const profilePicture = new Image(); profilePicture.src = profilePic; profilePicture.width = 50;
+    profilePicture.classList.add('svg');
     document.querySelector('.profile-picture').append(profilePicture);
+    profilePicture.addEventListener('click', toggleTheme);
 
     // Create 2 divs: quickLinksTitleContainer and projectsTitleContainer. Append them to quickLinksSection and projectsSection.
     // Create 2 divs: quickLinksBody and projectsBody. Append them to quickLinksSection and projectsSection.
@@ -58,11 +61,11 @@ export default function renderStaticContent(){
     // Create 2 titles: Quick Links and Projects. Append quick links to menu section. Append Projects title and 'add project' button to projectsTitleContainer.
     document.querySelector('.menu-title-container').append(
         new Comp('div', {classList: ['menu-title'], textContent: 'Quick Views'}).render(),
-        new Comp('img', {classList: ['dropdown-btn expanded'], src: dropDown, width: 20}).render()
+        new Comp('img', {classList: ['dropdown-btn expanded svg'], src: dropDown, width: 20}).render()
     );
     document.querySelector('.projects-title-container').append(
         new Comp('div', {classList: ['projects-title'], textContent: 'Projects'}).render(),
-        new Comp('img', {classList: ['dropdown-btn-projects add-mode'], src: addBtn, width: 20}).render()
+        new Comp('img', {classList: ['dropdown-btn-projects add-mode svg'], src: addBtn, width: 20}).render()
     );
 
     // Create 4 menu items: All tasks, Today, This Week, High Priority. Append all 4 to quickLinks section.
@@ -190,12 +193,12 @@ function renderStaticMain(){
     mainTitleContainer.append(new Comp('div', {classList: ['main-title'], textContent: 'All Tasks'}).render());
 
     // Add an edit button
-    const edit = new Comp('img', {classList: ['edit-title-button hidden'], src: editIcon, width: 30}).render();
+    const edit = new Comp('img', {classList: ['edit-title-button hidden svg'], src: editIcon, width: 30}).render();
     
     mainTitleContainer.append(edit);
 
     mainTitleContainer.append(  
-        new Comp('img', {classList: ['add-todo-button hidden'], src: addBtn, width: 40}).render()
+        new Comp('img', {classList: ['add-todo-button hidden svg'], src: addBtn, width: 40}).render()
     )
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
     mainBody.append(getMainInfo());
