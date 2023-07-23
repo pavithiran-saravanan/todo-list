@@ -1,5 +1,5 @@
 import Comp, { getMenuItem, getProjectItem} from "./ui-components-sidebar";
-import getTodoItem from "./ui-components-main";
+import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
@@ -171,7 +171,7 @@ export function displayTodos(title, todos, projectId){
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
     if(todos.length == 0){
-        mainBody.append(new Comp('div', {classList: ['main-info'], textContent: 'No tasks to display'}).render());
+        mainBody.append(getMainInfo());
     }
     todos.forEach((todo, index)=>{
         // Call a function that returns an todo main element and append it to main
@@ -189,7 +189,7 @@ function renderStaticMain(){
         new Comp('img', {classList: ['add-todo-button hidden'], src: addBtn, width: 40}).render()
     )
     const mainBody = new Comp('div', {classList: ['main-body']}).render();
-    mainBody.append(new Comp('div', {classList: ['main-info'], textContent: 'No Projects to display'}).render());
+    mainBody.append(getMainInfo());
 
     main.append(
         mainTitleContainer,

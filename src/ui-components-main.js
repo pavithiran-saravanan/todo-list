@@ -141,7 +141,8 @@ function deleteEventHandler(e){
 
     // Delete the todo item on display
     e.target.parentElement.parentElement.parentElement.remove();
-    myApp.displayProjects();
+    if(document.querySelector('.main-body').childElementCount === 0) document.querySelector('.main-body').append(getMainInfo());
+    // myApp.displayProjects();
 };
 
 export function getEditForm(todo){
@@ -241,6 +242,7 @@ function getCancelButton(){
             document.querySelector('.add-todo-button').classList.remove('hidden');
         }
         document.querySelector('.add-todo-button').classList.remove('hidden');
+        if(document.querySelector('.main-body').childElementCount === 0) document.querySelector('.main-body').append(getMainInfo());
     });
     return cancel;
 };
@@ -299,3 +301,7 @@ function getIndexOfSelectedProject(){
     });
     return index;
 }
+
+export function getMainInfo(){
+    return new Comp('div', {classList: ['main-info'], textContent: 'No tasks to display'}).render();
+};

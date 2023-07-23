@@ -225,11 +225,9 @@ body{
     filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);
 }
 .remove-project-btn:hover{
-    transform: scale(1.15);
     /* color-red */
     filter: invert(25%) sepia(75%) saturate(1020%) hue-rotate(325deg) brightness(130%) contrast(98%);
 }
-
 /* Main */
 
 .main-title-container{
