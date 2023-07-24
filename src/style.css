@@ -178,25 +178,19 @@ input {
     font-weight: 500;
     color: var(--color-grey);
     font-size: 18px;
-    transition: all 0.1s;
+    transition: all 0.2s;
 }
 
 .menu-body, .projects-body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 300px;
-    transition: max-height 0.4s ease;
-    overflow: hidden;
-}
-
-.projects-body{
-    max-height: 600px;
+    transition: all 1s ease;
 }
 
 /* class to show and hide menu items*/
 .hide{
-    max-height: 0px;
+    display: none;
 }
 
 .menu-item img{
