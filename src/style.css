@@ -178,14 +178,13 @@ input {
     font-weight: 500;
     color: var(--color-grey);
     font-size: 18px;
-    transition: all 0.2s;
+    /* transition: all 0.3s; */
 }
 
 .menu-body, .projects-body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: all 1s ease;
 }
 
 /* class to show and hide menu items*/
@@ -216,7 +215,7 @@ input {
     font-weight: 500;
     color: var(--color-grey);
     font-size: 18px;
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
 }
 
 .project-item:hover, .menu-item:hover{
@@ -304,7 +303,6 @@ input {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: all 1s;
 
     /* Set overflow to scroll and hide scroll bar */
     overflow-y: scroll;
@@ -549,29 +547,30 @@ input {
 
 /* New Project */
 .new-project-container{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    gap: 10px;
+    width: 100%;
 }
 
 .new-project-input{
-    /* background-color: var(--color-accent-light); */
-    border: 2px solid var(--color-accent-light);
+    /* border: 2px solid var(--color-accent-light); */
+    background-color: var(--color-accent-light);
     font-size: 18px;
     border-radius: 12px;
     padding: 12px 20px;
+    min-width: 100px;
 }
 
 .new-project-buttons{
     display: flex;
-    justify-content: end;
     align-items: center;
+    justify-content: end;
     gap: 8px;
 }
 
 .new-project-button{
     background-color: var(--color-accent);
-    border-radius: 10px;
+    border-radius: 100px;
     color: white;
     padding: 12px 0px;
     width: 100px;
