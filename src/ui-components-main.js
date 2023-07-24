@@ -186,6 +186,7 @@ function getSaveButton(){
         const date = form.querySelector('.edit-date-container').querySelector('.edit-input').value;
         const description = form.querySelector('.edit-description-container').querySelector('.edit-input').value;
 
+        const projectsBody = document.querySelector('.projects-body');
         // Handle logic for new todo addition
         if(!todo.querySelector('.todo-item-main') && !todo.querySelector('.description-container')){
             const projectIndex = getIndexOfSelectedProject();
@@ -195,14 +196,16 @@ function getSaveButton(){
             // Add the todo to project.
             myApp.projects[projectIndex].addTodo(obj);
 
-            //  Trigger local save
-            // myApp.writeToLocal();
-
             // Rerender the todo elements
             displayTodos(myApp.projects[projectIndex].title, myApp.projects[projectIndex].todos, projectIndex);
 
             todo.remove();
-            document.querySelector('.add-todo-button').classList.remove('hidden');
+
+            // Unhide add-todo-button only if the current selected sidebar item is a menuitem
+            if(projectsBody.querySelector('.selected')){
+                document.querySelector('.add-todo-button').classList.remove('hidden');
+            }
+
             return;
         }
 
@@ -225,7 +228,10 @@ function getSaveButton(){
         const updatedTodo = getTodoItem(obj, taskIndex, parentIndex);
         mainBody.insertBefore(updatedTodo, todo);
         todo.remove();
-        document.querySelector('.add-todo-button').classList.remove('hidden');
+        // Unhide add-todo-button only if the current selected sidebar item is a menuitem
+        if(projectsBody.querySelector('.selected')){
+            document.querySelector('.add-todo-button').classList.remove('hidden');
+        }
     });
     return saveBtn;
 };
@@ -241,11 +247,19 @@ function getCancelButton(){
         // Get back previously hidden divs
         if(todo.querySelector('.todo-item-main')) todo.querySelector('.todo-item-main').classList.remove('hidden');
         if(todo.querySelector('.description-container')) todo.querySelector('.description-container').classList.remove('hidden');
+
+        const projectsBody = document.querySelector('.projects-body');
         if(!todo.querySelector('.todo-item-main') && !todo.querySelector('.description-container')){
             todo.remove();
+            // // Unhide add-todo-button only if the current selected sidebar item is a menuitem
+            // if(projectsBody.querySelector('.selected')){
+            //     document.querySelector('.add-todo-button').classList.remove('hidden');
+            // }
+        }
+        // Unhide add-todo-button only if the current selected sidebar item is a menuitem
+        if(projectsBody.querySelector('.selected')){
             document.querySelector('.add-todo-button').classList.remove('hidden');
         }
-        document.querySelector('.add-todo-button').classList.remove('hidden');
         if(document.querySelector('.main-body').childElementCount === 0) document.querySelector('.main-body').append(getMainInfo());
     });
     return cancel;
