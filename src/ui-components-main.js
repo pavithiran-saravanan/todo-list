@@ -191,7 +191,10 @@ function getSaveButton(){
         if(!todo.querySelector('.todo-item-main') && !todo.querySelector('.description-container')){
             const projectIndex = getIndexOfSelectedProject();
             // Create new todo object with fetched data
-            const obj = new Todo(title, description, new Date(date), priority);
+            const obj = new Todo(title.trim() === '' ? 'No Title' : title.trim(),
+                                description.trim() === ''? 'No Description' : description.trim(),
+                                new Date(date),
+                                priority);
 
             // Add the todo to project.
             myApp.projects[projectIndex].addTodo(obj);
@@ -213,7 +216,10 @@ function getSaveButton(){
         const parentIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-project-id');
         const taskIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
         const obj = myApp.projects[parentIndex].todos[taskIndex];
-        obj.title = title; obj.priority = priority; obj.dueDate = new Date(date); obj.desc = description;
+        obj.title = title.trim() === '' ? 'No Title' : title.trim();
+        obj.priority = priority;
+        obj.dueDate = new Date(date);
+        obj.desc = description.trim() === ''? 'No Description' : description.trim();
 
         // Trigger save to local
         myApp.writeToLocal();

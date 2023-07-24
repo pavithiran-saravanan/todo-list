@@ -123,6 +123,7 @@ export function addEventListernersToMenuItems(app){
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach((menuItem, index)=>{
         menuItem.addEventListener('click', (e) => {
+            removeNewProjectContainer();
 
             // Hide edit title button and add todo button
             document.querySelector('.add-todo-button').classList.add('hidden');
@@ -161,6 +162,8 @@ export function addEventListernersToProjectItems(app){
     const projectItems = document.querySelectorAll('.project-item');
     projectItems.forEach((projectItem, index)=>{
         projectItem.addEventListener('click', (e) => {
+
+            removeNewProjectContainer();
 
             // Unhide edit tile button and add todo button. Unhide main title
             document.querySelector('.add-todo-button').classList.remove('hidden');
@@ -273,7 +276,7 @@ function addNewProjectHandler(e){
     const buttons = new Comp('div', {classList: ['new-project-buttons']}).render();
     const cancel = new Comp('button', {classList: ['new-project-button new-project-button-cancel'], textContent: 'Cancel'}).render();
     const add = new Comp('button', {classList: ['new-project-button new-project-button-add'], textContent: 'Add'}).render();
-    buttons.append(cancel, add);
+    buttons.append(add, cancel);
     container.append(input, buttons);
     projectsBody.append(container);
     input.focus();
@@ -314,6 +317,8 @@ function addNewProjectHandler(e){
 
 function editTitleHandler(e){
     const btn = e.target;
+
+    removeNewProjectContainer();
 
     const mainTitleContainer = document.querySelector('.main-title-container');
     const mainTitle = document.querySelector('.main-title');
@@ -358,4 +363,11 @@ function editTitleHandler(e){
     // Change the src image to save, add a class of savemode
     btn.classList.add('save-mode');
     btn.src = tickIcon;
+};
+
+export function removeNewProjectContainer(){
+    const container = document.querySelector('.new-project-container');
+    if(container){
+        container.querySelector('.new-project-button-cancel').click();
+    }
 };
