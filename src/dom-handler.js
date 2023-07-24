@@ -123,8 +123,20 @@ export function addEventListernersToMenuItems(app){
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach((menuItem, index)=>{
         menuItem.addEventListener('click', (e) => {
+
+            // Hide edit title button and add todo button
             document.querySelector('.add-todo-button').classList.add('hidden');
             document.querySelector('.edit-title-button').classList.add('hidden');
+
+            // Remove edit mode from edit title button if present
+            if(document.querySelector('.edit-mode')) document.querySelector('.edit-mode').classList.remove('edit-mode');
+
+            // Unhide main title
+            document.querySelector('.main-title').classList.remove('hidden');
+
+            // Hide main title input
+            if(document.querySelector('.main-title-input')) document.querySelector('.main-title-input').remove();
+
             // Select the clicked item
             if(!menuItem.classList.contains('selected')){
                 menuItem.classList.add('selected');
@@ -149,8 +161,22 @@ export function addEventListernersToProjectItems(app){
     const projectItems = document.querySelectorAll('.project-item');
     projectItems.forEach((projectItem, index)=>{
         projectItem.addEventListener('click', (e) => {
+
+            // Unhide edit tile button and add todo button. Unhide main title
             document.querySelector('.add-todo-button').classList.remove('hidden');
             document.querySelector('.edit-title-button').classList.remove('hidden');
+            document.querySelector('.main-title').classList.remove('hidden');
+            
+            // Remove input field if present
+            if(document.querySelector('.main-title-input')) document.querySelector('.main-title-input').remove();
+
+            // If edit title button is in save mode revert it
+            const editBtn = document.querySelector('.save-mode');
+            if(editBtn){
+                editBtn.classList.remove('save-mode');
+                editBtn.src = editIcon;
+            }
+            
             // Select the clicked item
             if(!projectItem.classList.contains('selected')){
                 projectItem.classList.add('selected');
