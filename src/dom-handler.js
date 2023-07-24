@@ -178,10 +178,13 @@ export function addEventListernersToProjectItems(app){
             }
             
             // Select the clicked item
-            if(!projectItem.classList.contains('selected')){
-                projectItem.classList.add('selected');
-                displayTodos(app.projects[index].title, app.projects[index].todos, index);
-            }
+            projectItem.classList.add('selected');
+
+            // Get projectItem's current position. Not using 'index' as the projectItem's position might have changed due to deletion of some items.
+            const id = Array.from(document.querySelectorAll('.project-item')).indexOf(projectItem);
+
+            displayTodos(app.projects[id].title, app.projects[id].todos, id);
+
             // Unselect all other menu items and project items
             projectItems.forEach((item)=>{
                 if( item != projectItem ){
@@ -199,6 +202,7 @@ function getMenuTasks(menuIndex, app){
 
 // Display's todos in main based on the menuItem selected
 export function displayTodos(title, todos, projectId){
+    // console.log(title);
     document.querySelector('.main-title').textContent = title;
     const mainBody = document.querySelector('.main-body');
     mainBody.textContent = '';
