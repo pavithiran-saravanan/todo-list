@@ -3,7 +3,7 @@ import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
-import profilePic from './icons/dark-light-2.svg';
+import profilePic from './avatars/avatar-2.png';
 import dropDown from './icons/dropdown-icon.svg';
 import editIcon from './icons/edit-icon-square.svg';
 import tickIcon from './icons/tick-icon.svg';
@@ -41,10 +41,10 @@ export default function renderStaticContent(){
         new Comp('div', {classList: ['taskmaster'], textContent: 'TaskMaster'}).render()
     )
     const profilePicture = new Image(); profilePicture.src = profilePic; profilePicture.width = 50;
-    profilePicture.classList.add('svg');
+    // profilePicture.classList.add('svg');
     document.querySelector('.profile-picture').append(profilePicture);
     profilePicture.addEventListener('click', toggleTheme);
-
+        
     // Create 2 divs: quickLinksTitleContainer and projectsTitleContainer. Append them to quickLinksSection and projectsSection.
     // Create 2 divs: quickLinksBody and projectsBody. Append them to quickLinksSection and projectsSection.
     const menuSection = document.querySelector('.menu-section');

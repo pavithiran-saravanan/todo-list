@@ -117,13 +117,13 @@ input {
 
 /* Profile Section */
 .profile-section{
-    padding: 18px;
+    padding: 18px 22px;
     background-color: var(--color-accent-light);
     border-radius: 12px;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
-    column-gap: 12px;
+    column-gap: 18px;
     align-items: center;
 }
 
@@ -143,8 +143,8 @@ input {
 }
 
 .profile-picture img {
-    width: 80%;
-    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%); /* Grey */
+    width: 100%;
+    /* filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);  */
 }
 
 .username, .menu-title, .projects-title{
