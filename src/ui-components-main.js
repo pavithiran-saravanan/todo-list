@@ -99,7 +99,15 @@ function getEditButton(){
 }
 
 function editEventHandler(e){
+    // Prevent Event Bubbling
     e.stopPropagation();
+
+    // Check if there is any other todo item in edit mode. If so click on it's cancel button to revert it to default mode.
+    const item = document.querySelector('.edit');
+    if(item){
+        item.querySelector('.btn-cancel').click();
+    };
+
     document.querySelector('.add-todo-button').classList.add('hidden');
     const todoItem = e.target.parentElement.parentElement.parentElement; 
     if(todoItem.querySelector('.tick').classList.contains('checked')) return;
