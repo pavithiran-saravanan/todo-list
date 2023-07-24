@@ -213,11 +213,13 @@ function renderStaticMain(){
 
 export function selectAllTasks(app){
     // Unselsect all other items
-    document.querySelectorAll('.project-item').forEach((item)=>{item.classList.remove('selected');})
-    document.querySelectorAll('.menu-item').forEach((item)=>{item.classList.remove('selected');})
+    // document.querySelectorAll('.project-item').forEach((item)=>{item.classList.remove('selected');})
+    // document.querySelectorAll('.menu-item').forEach((item)=>{item.classList.remove('selected');})
 
-    document.querySelector('.menu-item').classList.add('selected');
-    displayTodos("All Tasks", app.getAllTodos());
+    // document.querySelector('.menu-item').classList.add('selected');
+    // displayTodos("All Tasks", app.getAllTodos());
+    document.querySelector('.today-container').click();
+    document.querySelector('.all-tasks-container').click();
 };
 
 function addNewProjectHandler(e){
