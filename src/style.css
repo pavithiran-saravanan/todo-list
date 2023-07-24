@@ -83,8 +83,14 @@ input {
     color: var(--color-grey);
 }
 
+html{
+    height: 100lvh;
+    width: 100vw;
+}
+
 #content{
     height: 100%;
+    width: 100%;
     background-color: var(--color-accent-light);
     padding: 34px;
     display: flex;
@@ -100,7 +106,7 @@ input {
 
 .sidebar{
     width: 27%;
-    min-width: 350px;
+    min-width: 320px;
     padding: 28px;
     display: flex;
     flex-direction: column;
