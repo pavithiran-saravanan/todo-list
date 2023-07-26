@@ -1,0 +1,41 @@
+/* Purple Accent Light */
+body[accent = 'green']{
+    /* Card Color */
+    --color-white: rgba(255, 255, 255, 0.7);
+    /* Font Color */
+    --color-grey: #333;
+    /* Background and highlights*/
+    --color-accent-light: #cdedc9;
+    /* Todo item effect */
+    --color-accent-lighter: #eaffeb83;
+    /* Accent color */
+    --color-accent: #449143;
+    /* Accent color hover */
+    --color-accent-hover: #53b358;
+}
+
+body[accent = 'green'] .svg-accent, body[accent = 'green'] .tick{
+    /* Green for light mode */
+    filter: invert(44%) sepia(16%) saturate(1479%) hue-rotate(71deg) brightness(105%) contrast(88%);
+}
+
+/* Green Accent Dark */
+.dark[accent = 'green']{
+    /* Card Color */
+    --color-white: #262e26;
+    /* Font Color */
+    --color-grey: #ffffff; 
+    /* Background and highlights*/
+    --color-accent-light: #171b18;  
+    /* Todo item effect */
+    --color-accent-lighter: #151a1528; 
+    /* Accent color */
+    --color-accent: #4ea24b;
+    /* Accent color hover */
+    --color-accent-hover: #68d161;
+}
+
+.dark[accent = 'green'] .svg-accent, .dark[accent = 'green'] .tick{
+    /* Green for dark mode */
+    filter: invert(51%) sepia(14%) saturate(1659%) hue-rotate(71deg) brightness(92%) contrast(89%);
+}

@@ -11,10 +11,13 @@ import { add } from "date-fns";
 import { addTaskHandler } from "./new-task";
 import { myApp } from ".";
 import Project from "./project";
-import { toggleTheme } from "./theme";
+import { applyDark, setAccent, toggleTheme } from "./theme";
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
+    setAccent('purple');
+    // applyDark();
+
     const content = document.querySelector('#content');
 
     // Create two divs: sidebar and main. Append them to content.

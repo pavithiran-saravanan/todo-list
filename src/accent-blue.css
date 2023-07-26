@@ -1,0 +1,41 @@
+/* blue Accent Light */
+body[accent = 'blue']{
+    /* Card Color */
+    --color-white: rgba(255, 255, 255, 0.7);
+    /* Font Color */
+    --color-grey: #333;
+    /* Background and highlights*/
+    --color-accent-light: #d6dcff;
+    /* Todo item effect */
+    --color-accent-lighter: #eaedff83;
+    /* Accent color */
+    --color-accent: #434b91;
+    /* Accent color hover */
+    --color-accent-hover: #535db3;
+}
+
+body[accent = 'blue'] .svg-accent, body[accent = 'blue'] .tick{
+    /* blue for dark mode */
+    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+}
+
+/* blue Accent Dark */
+.dark[accent = 'blue']{
+    /* Card Color */
+    --color-white: #26262e;
+    /* Font Color */
+    --color-grey: #ffffff; 
+    /* Background and highlights*/
+    --color-accent-light: #18171b;  
+    /* Todo item effect */
+    --color-accent-lighter: #16151a28; 
+    /* Accent color */
+    --color-accent: #616cd1;
+    /* Accent color hover */
+    --color-accent-hover: #7683f7;
+}
+
+.dark[accent = 'blue'] .svg-accent, .dark[accent = 'blue'] .tick{
+    /* blue for dark mode */
+    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
+}

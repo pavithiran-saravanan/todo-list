@@ -1,0 +1,41 @@
+/* cyan Accent Light */
+body[accent = 'cyan']{
+    /* Card Color */
+    --color-white: rgba(255, 255, 255, 0.7);
+    /* Font Color */
+    --color-grey: #333;
+    /* Background and highlights*/
+    --color-accent-light: #c9ede8;
+    /* Todo item effect */
+    --color-accent-lighter: #eaffff83;
+    /* Accent color */
+    --color-accent: #438d91;
+    /* Accent color hover */
+    --color-accent-hover: #53b3b3;
+}
+
+body[accent = 'cyan'] .svg-accent, body[accent = 'cyan'] .tick{
+    /* cyan for light mode */
+    filter: invert(63%) sepia(4%) saturate(4140%) hue-rotate(134deg) brightness(78%) contrast(100%);
+}
+
+/* cyan Accent Dark */
+.dark[accent = 'cyan']{
+    /* Card Color */
+    --color-white: #262e2d;
+    /* Font Color */
+    --color-grey: #ffffff; 
+    /* Background and highlights*/
+    --color-accent-light: #171b1b;  
+    /* Todo item effect */
+    --color-accent-lighter: #151a1a28; 
+    /* Accent color */
+    --color-accent: #4ba29e;
+    /* Accent color hover */
+    --color-accent-hover: #61d1c2;
+}
+
+.dark[accent = 'cyan'] .svg-accent, .dark[accent = 'cyan'] .tick{
+    /* cyan for dark mode */
+    filter: invert(63%) sepia(4%) saturate(4140%) hue-rotate(134deg) brightness(78%) contrast(100%);
+}

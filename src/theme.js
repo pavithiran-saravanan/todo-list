@@ -1,11 +1,13 @@
 export function applyDark(){
-    document.body.setAttribute('accent', 'purple-dark');
     document.body.classList.add('dark');
 }
 
 export function applyLight(){
-    document.body.setAttribute('accent', 'purple');
     document.body.classList.remove('dark');
+}
+
+export function setAccent(accent = 'purple'){
+    document.body.setAttribute('accent', accent);
 }
 
 export function toggleTheme(){

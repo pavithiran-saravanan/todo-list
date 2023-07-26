@@ -1,0 +1,52 @@
+/* Light Theme Common Changes */
+body{
+    --color-red: #D14848;
+    --color-red-hover: #e64f4f;
+
+    --color-green: #50AB4E;
+    --color-green-light: #E2FFE8;
+
+    --color-mustard: #ABA24E;
+    --color-mustard-light: #FEFFE2;
+
+    --color-brick: #AB4E4E;
+    --color-brick-light: #FFE2E2;
+}
+
+body .svg{
+    /* Grey icons for light mode */
+    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(179deg) brightness(91%) contrast(82%);
+}
+
+body .remove-project-btn:hover, body .remove-button{
+    /* Red icons for light mode */
+    filter: invert(25%) sepia(75%) saturate(1020%) hue-rotate(325deg) brightness(130%) contrast(98%);
+}
+/* End of Light Theme Common Changes */
+
+
+/* Dark Theme Common Changes */
+.dark{
+    --color-red: #b13a3a;
+    --color-red-hover: #e64f4f;
+
+    --color-green: #50AB4E;
+    --color-green-light: #18171b81;
+
+    --color-mustard: #ABA24E;
+    --color-mustard-light: #18171b81;
+
+    --color-brick: #AB4E4E;
+    --color-brick-light: #18171b81;
+}
+
+.dark .svg{
+    /* White icons for dark mode*/
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(330deg) brightness(101%) contrast(106%);
+}
+
+.dark .remove-project-btn:hover, .dark .remove-button{
+    /* Red for dark mode*/
+    filter: invert(25%) sepia(75%) saturate(1020%) hue-rotate(325deg) brightness(130%) contrast(98%);
+}
+/* End of Dight Theme Common Changes */

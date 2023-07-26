@@ -2,6 +2,13 @@ import { createPriority } from "./priority";
 import Project from "./project";
 import { TodoApp } from "./todo-app";
 import './style.css';
+import './theme.css';
+import './accent-blue.css';
+import './accent-green.css';
+import './accent-cyan.css';
+import './accent-pink.css';
+import './accent-red.css';
+import './accent-purple.css';
 import renderStaticContent, { addEventListernersToMenuItems, addEventListernersToProjectItems, populateProjects, selectAllTasks, testSVG } from "./dom-handler";
 import Todo from "./todo";
 

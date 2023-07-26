@@ -37,47 +37,6 @@ body{
     height: 100vh;
 }
 
-.dark{
-    --color-red: #b13a3a;
-    --color-red-hover: #e64f4f;
-
-    --color-green: #50AB4E;
-    --color-green-light: #18171b81;
-
-    --color-mustard: #ABA24E;
-    --color-mustard-light: #18171b81;
-
-    --color-brick: #AB4E4E;
-    --color-brick-light: #18171b81;
-}
-
-body[accent = 'purple-dark']{
-    /* Changed */
-    --color-white: #26262e; /* Card Color */
-    --color-grey: #ffffff; /* Font Color */
-    --color-accent-light: #18171b;  /* Background and highlights*/
-    --color-accent-lighter: #16151a28; /* Todo item effect */
-
-    --color-accent: #616cd1;
-    --color-accent-hover: #7683f7;
-}
-
-body[accent = 'purple-dark'] .svg{
-    /* White */
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(330deg) brightness(101%) contrast(106%);
-}
-
-body[accent = 'purple-dark'] .svg-accent, body[accent = 'purple-dark'] .tick{
-    /* Accent */
-    filter: invert(29%) sepia(69%) saturate(670%) hue-rotate(205deg) brightness(94%) contrast(93%);
-}
-
-body[accent = 'purple-dark'] .remove-project-btn:hover, body[accent = 'purple-dark'] .remove-button{
-    /* Red */
-    filter: invert(25%) sepia(75%) saturate(1020%) hue-rotate(325deg) brightness(130%) contrast(98%);
-}
-
-
 input {
     all: unset;
     color: var(--color-grey);
