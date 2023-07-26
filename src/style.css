@@ -86,10 +86,15 @@ html{
     background-color: var(--color-accent-light);
     border-radius: 12px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto;
     column-gap: 18px;
     align-items: center;
+}
+
+.settings-icon{
+    grid-column: -2/-1;
+    grid-row: 1/-1;
 }
 
 .profile-picture{

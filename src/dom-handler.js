@@ -7,6 +7,7 @@ import profilePic from './avatars/avatar-2.png';
 import dropDown from './icons/dropdown-icon.svg';
 import editIcon from './icons/edit-icon-square.svg';
 import tickIcon from './icons/tick-icon.svg';
+import settingsIcon from './icons/settings-icon-solid.svg';
 import { add } from "date-fns";
 import { addTaskHandler } from "./new-task";
 import { myApp } from ".";
@@ -41,7 +42,8 @@ export default function renderStaticContent(){
     profileSection.append(
         new Comp('div', {classList: ['profile-picture']}).render(),
         new Comp('div', {classList: ['username'], textContent: 'Quiet2k'}).render(),
-        new Comp('div', {classList: ['taskmaster'], textContent: 'TaskMaster'}).render()
+        new Comp('div', {classList: ['taskmaster'], textContent: 'TaskMaster'}).render(),
+        new Comp('img', {classList: ['settings-icon svg-accent'], src: settingsIcon , width: 25}).render(),
     )
     const profilePicture = new Image(); profilePicture.src = profilePic; profilePicture.width = 50;
     // profilePicture.classList.add('svg');
