@@ -1,4 +1,4 @@
-import Comp, { getMenuItem, getProjectItem, getProjectsInfo, getSettinsCard} from "./ui-components-sidebar";
+import Comp, { getMenuItem, getProjectItem, getProjectsInfo, getSettinsCard, readThemeFromLocal} from "./ui-components-sidebar";
 import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
@@ -13,6 +13,8 @@ import { addTaskHandler } from "./new-task";
 import { myApp } from ".";
 import Project from "./project";
 import { applyDark, setAccent, toggleTheme } from "./theme";
+import { avatarsData } from "./ui-components-sidebar";
+
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
@@ -101,6 +103,9 @@ export default function renderStaticContent(){
     const settings = document.querySelector('.settings-icon');
     settings.addEventListener('click', settingsEventHandler);
     // settings.click();
+
+    // Read theme from local
+    readThemeFromLocal();
 }
 
 // Settings Event Handler

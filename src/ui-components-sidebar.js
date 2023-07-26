@@ -10,6 +10,8 @@ import avatar5 from './avatars/avatar-5.png';
 import avatar6 from './avatars/avatar-6.png';
 import { toggleTheme } from './theme';
 
+const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
+
 // Generate simple dom elements with required properties while invoking constructor
 export default class Comp {
     constructor(type, properties){
@@ -88,7 +90,6 @@ export function getSettinsCard(){
     );
 
     const avatarName = document.querySelector('.profile-picture').querySelector('img').classList[0];
-    console.log(avatarName);
     avatarContainer.querySelector(`.${avatarName}`).click();
 
     const accent = document.body.getAttribute('accent');
@@ -114,6 +115,7 @@ export function getSettinsCard(){
     save.addEventListener('click', e=>{
         document.querySelector('.username').textContent = document.querySelector('.username-input').value || 'Username';
         document.querySelector('.overlay').remove();
+        saveThemeToLocal();
     });
 
     def.addEventListener('click', e=>{
@@ -155,3 +157,39 @@ function getAccent(name){
     });
     return accent;
 }
+
+export function saveThemeToLocal(){
+    const themeData = {
+        username: document.querySelector('.username').textContent,
+        profile: document.querySelector('.profile-picture').querySelector('img').className,
+        accent: document.body.getAttribute('accent'),
+        isDark: document.body.classList.contains('dark') ? true : false,
+    }
+    localStorage.setItem('themeData', JSON.stringify(themeData));
+    console.log('theme written to local storage');
+};
+
+export function readThemeFromLocal(){
+    if(localStorage.getItem('themeData')){
+        const data = localStorage.getItem('themeData');
+        const themeData =  JSON.parse(data);
+        // Apply read theme
+        document.body.setAttribute('accent', themeData.accent);
+        if(themeData.isDark) document.body.classList.add('dark');
+        document.querySelector('.username').textContent = themeData.username;
+
+        // Find the correct profile picture based on the data stored in local storage
+        avatars.forEach((avatar, index) => {
+            if(themeData.profile === `avatar${index+1}`){
+                document.querySelector('.profile-picture').querySelector('img').src = avatar;
+                document.querySelector('.profile-picture').querySelector('img').className = themeData.profile;
+                return;
+            }
+        });
+    }
+    else{
+        document.querySelector('.settings-icon').click();
+    }
+}
+
+// export {avatars as avatarsData};

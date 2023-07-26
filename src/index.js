@@ -21,7 +21,7 @@ export const myApp = new TodoApp([]);
 // If projects data is found in local storage, read from it. If not found, initialize app with default projects and write to local storage.
 if(localStorage.getItem('projects')){
     if(JSON.parse(localStorage.getItem('projects')).data.length !== 0){
-        console.log('key found in local storage');
+        // console.log('key found in local storage');
         myApp.readFromLocal();
     }
     else{

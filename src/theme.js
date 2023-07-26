@@ -1,3 +1,5 @@
+import { saveThemeToLocal } from "./ui-components-sidebar";
+
 export function applyDark(){
     document.body.classList.add('dark');
 }
@@ -13,4 +15,5 @@ export function setAccent(accent = 'purple'){
 export function toggleTheme(){
     if(document.body.classList.contains('dark')) applyLight();
     else applyDark();
+    saveThemeToLocal();
 }
