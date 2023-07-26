@@ -1,4 +1,4 @@
-import Comp, { getMenuItem, getProjectItem, getProjectsInfo} from "./ui-components-sidebar";
+import Comp, { getMenuItem, getProjectItem, getProjectsInfo, getSettinsCard} from "./ui-components-sidebar";
 import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
@@ -16,7 +16,7 @@ import { applyDark, setAccent, toggleTheme } from "./theme";
 // import { TodoApp } from "./todo-app";
 
 export default function renderStaticContent(){
-    setAccent('purple');
+    setAccent('blue');
     // applyDark();
 
     const content = document.querySelector('#content');
@@ -94,7 +94,21 @@ export default function renderStaticContent(){
     if(document.querySelector('.add-mode')){
         document.querySelector('.add-mode').addEventListener('click', addNewProjectHandler);
     }
+
+    // Add event listener to settings icon
+    const settings = document.querySelector('.settings-icon');
+    settings.addEventListener('click', settingsEventHandler);
+    settings.click();
 }
+
+// Settings Event Handler
+function settingsEventHandler(e){
+    // Display settings overlay
+    const overlay = new Comp('div', {classList: ['overlay']}).render();
+    document.body.append(overlay);
+    const card = getSettinsCard();
+    overlay.append(card);
+};
 
 // Get all project titles from myApp. Create a project item for each project title. Append all to projects section.
 export function populateProjects(projectTitles){
