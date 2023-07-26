@@ -32,14 +32,34 @@
     --color-brick-light: #FFE2E2;
 }
 
+/* 
+    Font size: 19
+
+    .main-title --> 28px
+    .username, .menu-title, .projects-title, .main-title-input --> 20px
+    .main-info .todo-title --> 17px
+    .menu-item .project-item .new-project-input --> 15px
+    .username-input --> 14px
+    .description-body .priority-container, .date-container edit-input .btn-cancel, .btn-save .new-project-button .settings-btn --> 12px
+    .taskmaster .description-title .edit-label --> 13px
+
+*/
+
 body{
     font-family: 'poppins';
     height: 100vh;
 }
 
+button{
+    font-family: 'poppins';
+    font-size: 12px;
+}
+
 input {
     all: unset;
     color: var(--color-grey);
+    font-family: 'poppins';
+    font-size: 12px;
 }
 
 html{
@@ -51,8 +71,8 @@ html{
     height: 100%;
     width: 100%;
     background-color: var(--color-accent-light);
-    padding: 34px;
     display: flex;
+    padding: 34px;
     gap: 24px;
 }
 
@@ -65,7 +85,7 @@ html{
 
 .sidebar{
     width: 27%;
-    min-width: 320px;
+    min-width: 340px;
     padding: 28px;
     display: flex;
     flex-direction: column;
@@ -120,16 +140,12 @@ html{
 .username, .menu-title, .projects-title{
     color: var(--color-grey);
     font-weight: bold;
-    font-size: 22px;
-    /* New */
     font-size: 20px;
 }
 
 .taskmaster{
     color: var(--color-accent);
     font-weight: 500;
-    font-size: 13px;
-    /* New */
     font-size: 13px;
     margin-top: -8px;
 }
@@ -140,22 +156,20 @@ html{
     gap: 8px;
 }
 
-.menu-item{
+.project-item, .menu-item{
     border: 2px solid var(--color-accent-light);
     border-radius: 10px;
-
     padding: 10px 18px;
-
     display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 16px;
     font-weight: 500;
     color: var(--color-grey);
     font-size: 15px;
-    /* New */
-    font-size: 15px;
-    /* transition: all 0.3s; */
+}
+
+.menu-item{
+    justify-content: start;
+    align-items: center;
+    gap: 16px;
 }
 
 .menu-body, .projects-body{
@@ -182,19 +196,7 @@ html{
 }
 
 .project-item{
-    border: 2px solid var(--color-accent-light);
-    border-radius: 10px;
-
-    /* New */
-    padding: 10px 18px;
-
-    display: flex;
     justify-content: space-between;
-    font-weight: 500;
-    color: var(--color-grey);
-    font-size: 15px;
-    /* New */
-    font-size: 15px;
 }
 
 .project-item:hover, .menu-item:hover{
@@ -276,17 +278,13 @@ html{
     color: var(--color-grey);
     font-weight: bold;
     font-size: 28px;
-    /* New */
-    font-size: 28px;
 }
 
 .main-title-input{
     color: var(--color-grey);
     background-color: var(--color-accent-light);
     font-weight: bold;
-    font-size: 22px;
-    /* New */
-    font-size: 22px;
+    font-size: 20px;
     min-width: 100px;
     border-radius: 10px;
     padding: 10px 0px;
@@ -313,8 +311,6 @@ html{
     display: grid;
     height: 100%;
     place-content: center;
-    font-size: 17px;
-    /* New */
     font-size: 17px;
     color: var(--color-grey);
 }
@@ -350,8 +346,6 @@ html{
 
 .description-title{
     font-size: 13px;
-    /* New */
-    font-size: 13px;
     font-weight: 500;
     margin-bottom: 5px;
     text-align: left;
@@ -359,8 +353,6 @@ html{
 }
 
 .description-body{
-    font-size: 12px;
-    /* New */
     font-size: 12px;
     border-top: 1px solid var(--color-accent-light);
     /* border-radius: 11px; */
@@ -371,6 +363,7 @@ html{
 /* Buttons container */
 .buttons-container, .data-container{
     display: flex;
+    align-items: center;
     gap: 16px;
 }
 
@@ -382,10 +375,11 @@ html{
     width: 120px;
     font-weight: 600;
     font-size: 12px;
-    /* New */
-    font-size: 12px;
     border-radius: 100px;
     text-align: center;
+    
+    display: grid;
+    place-content: center;
 }
 
 .priority-container{
@@ -438,8 +432,6 @@ html{
 }
 
 .todo-title{
-    font-size: 17px;
-    /* New */
     font-size: 17px;
     font-weight: 600;
     color: var(--color-grey);
@@ -502,8 +494,6 @@ html{
 .edit-label{
     font-weight: 500;
     font-size: 13px;
-    /* New */
-    font-size: 13px;
     color: var(--color-grey);
 }
 
@@ -513,13 +503,8 @@ html{
     padding: 8px 15px;
     font-family: 'poppins';
     font-size: 12px;
-    /* New */
-    font-size: 12px;
     outline: none;
     color: var(--color-grey);
-}
-
-.edit-input:focus{
 }
 
 .edit-form-3{
@@ -536,8 +521,6 @@ html{
     padding: 10px 0px;
     width: 80px;
     font-weight: 600;
-    font-size: 12px;
-    /* New */
     font-size: 12px;
 }
 .btn-save:hover{
@@ -566,8 +549,6 @@ html{
     border: 2px solid var(--color-accent-light);
     /* background-color: var(--color-accent-light); */
     font-size: 15px;
-    /* New */
-    font-size: 15px;
     font-weight: 500;
     border-radius: 10px;
     padding: 10px 18px;
@@ -588,8 +569,6 @@ html{
     padding: 10px 0px;
     width: 80px;
     font-weight: 600;
-    font-size: 12px;
-    /* New */
     font-size: 12px;
 }
 
@@ -618,7 +597,7 @@ html{
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 1;
+    z-index: 1000   ;
     backdrop-filter: blur(4px);
     display: grid;
     place-content: center;
@@ -775,3 +754,311 @@ html{
 .avatar-chosen{
     border: 2px solid var(--color-grey);
 }
+
+.menu-btn{
+    color: var(--color-accent);
+    background: none;
+    font-size: 14px;
+    padding: 4px 6px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-weight: 600;
+}
+
+.show-mobile{
+    display: none;
+}
+
+
+/* Media Queries */
+
+/* 1201px and above */
+@media (max-width: 1200px) {
+    /* Font Sizes */
+    .main-title{
+        font-size: 24px;
+    }
+    .username{
+        font-size: 17px;
+    }
+    .main-info, .todo-title{
+        font-size: 15px;
+    }
+    .menu-item, .project-item, .new-project-input, .taskmaster{
+        font-size: 13px;
+    }
+    .username-input, .description-title, .edit-label{
+        font-size: 11px;
+    }
+    .description-body, .priority-container, .date-container, .edit-input, .btn-cancel, .btn-save, .new-project-button, .settings-btn{
+        font-size: 10px;
+    }
+
+    /* SVG size */
+    .menu-item img{
+        width: 14px;
+    }
+    .dropdown-btn, .dropdown-btn-projects{
+        width: 16px;
+    }
+    .add-mode{
+        width: 18px;
+    }
+    .remove-project-btn{
+        width: 12px;
+    }
+    .edit-button{
+        width: 19px;
+    }
+    .remove-button{
+        width: 20px;
+    }
+    .tick{
+        width: 20px;
+    }
+
+    /* Buttons size */
+    .priority-container{
+        width: 70px;
+    }
+    .date-container{
+        width: 90px;
+    }
+    .priority-container, .date-container, .new-project-button, .todo-edit-btn{
+        padding: 6px 0px;
+    }
+    .new-project-button, .todo-edit-btn{
+        width: 70px;
+    }
+
+    /* Padding and Gaps */
+    #content{
+        padding: 30px;
+        gap: 20px;
+    }
+    .main{
+        padding: 30px 36px;
+    }
+    .project-item, .menu-item, .new-project-input{
+        padding: 7px 12px;
+    }
+    .profile-section{
+        padding: 12px 16px;
+    }
+    .profile-picture{
+        width: 45px;
+        height: 45px;
+    }
+    .todo-item{
+        padding: 12px 16px;
+    }
+    .data-container,.buttons-container, .todo-item-main{
+        gap: 12px;
+    }
+}
+
+/* 1024px and above */
+@media (max-width: 1024px) {
+    #content{
+        padding: 0px;
+        gap: 0px;
+    }
+    .sidebar, .main{
+        border-radius: 0px;
+        box-shadow: none;
+    }
+    .sidebar{
+        min-width: 270px;
+    }
+    .main{
+        padding: 30px 30px 30px 5px;
+        gap: 10px;
+    }
+    .projects-body, .menu-body{
+        gap: 4px;
+    }
+    .main-body{
+        gap: 4px;
+    }
+    .profile-section{
+        column-gap: 12px;
+    }
+
+    /* Font Sizes */
+    .main-title{
+        font-size: 22px;
+    }
+    .menu-title, .projects-title{
+        font-size: 16px;
+    }
+    .main-info, .todo-title, .username{
+        font-size: 14px;
+    }
+    .menu-item, .project-item, .new-project-input{
+        font-size: 12px;
+    }
+    .username-input, .description-title, .edit-label, .taskmaster{
+        font-size: 11px;
+    }
+    .description-body, .priority-container, .date-container, .edit-input, .btn-cancel, .btn-save, .new-project-button, .settings-btn{
+        font-size: 10px;
+    }
+    .taskmaster{
+        align-self: flex-start;
+        margin-top: -3px;
+    }
+    .username{
+        align-self: flex-end;
+    }
+
+    /* SVG size */
+    .menu-item img{
+        width: 12px;
+    }
+    .dropdown-btn, .dropdown-btn-projects{
+        width: 14px;
+    }
+    .add-mode{
+        width: 15px;
+    }
+    .remove-project-btn{
+        width: 10px;
+    }
+    .edit-button{
+        width: 15px;
+    }
+    .remove-button{
+        width: 16px;
+    }
+    .tick{
+        width: 16px;
+    }
+    .settings-icon{
+        width: 20px;
+    }
+    .edit-title-button{
+        width: 18px;
+    }
+    .save-mode{
+        width: 20px;
+    }
+    .add-todo-button{
+        width: 20px;
+    }
+
+     /* Buttons size */
+    .priority-container, .date-container, .new-project-button, .todo-edit-btn{
+        padding: 4px 0px;
+    }
+
+    /* Padding and Gaps */
+    .todo-item{
+        padding: 8px 14px;
+    }
+    .data-container,.buttons-container, .todo-item-main{
+        gap: 10px;
+    }   
+    .menu-item{
+        gap: 10px;
+    }
+    .main-title-input{
+        padding: 8px 12px;
+    }
+    .main-title-container{
+        gap: 12px;
+    }
+}
+
+/* 768px and above */
+@media (max-width: 768px) {
+    /* #content{
+        flex-direction: column;
+    }   
+    .sidebar{
+        width: 100%;
+    }  */
+
+    /* Collapsing sidebar */ 
+    .sidebar{
+        position: absolute;
+        left: -300px;
+        height: 100vh;
+        z-index: 10;
+    }
+    .sidebar-expanded{
+        left: 0px;
+    }
+    .main{
+        padding: 40px 30px;
+    }
+    .todo-title{
+        font-size: 12px;
+    }
+    .main-title{
+        font-size: 20px;
+    }
+    .description-body, .priority-container, .date-container, .edit-input, .btn-cancel, .btn-save, .new-project-button, .settings-btn{
+        font-size: 9px;
+    }
+    .date-container{
+        width: 78px;
+    }
+    .priority-container{
+        width: 60px;
+    }
+    .new-project-button, .todo-edit-btn{
+        width: 55px;
+    }
+    .edit-form-3{
+        gap: 6px;
+    }
+    .show-mobile{
+        display: block;
+        z-index: 100;
+    }
+}
+
+/* 480px and above */
+@media (max-width: 480px) {
+    .todo-title{
+        font-size: 10px;
+    }
+    .todo-item{
+        padding: 4px 10px;
+    }
+    .main{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .description-body, .priority-container, .date-container, .edit-input, .btn-cancel, .btn-save, .new-project-button, .settings-btn{
+        font-size: 8px;
+    }
+    .date-container{
+        width: 70px;
+        place-content: center;
+    }
+    .priority-container{
+        width: 55px;
+    }
+    .todo-item-main, .data-container, .buttons-container{
+        gap: 6px;
+    }
+    .todo-item{
+        border-radius: 8px;
+    }
+    .settings-card{
+        background-color: var(--color-white);
+        box-shadow: 2px 2px 2px var(--color-accent-lighter);
+        padding: 20px;
+        border-radius: 16px;
+        display:  grid;
+        gap: 5px;
+    }
+}
+
+/* 320px and above */
+@media (max-width: 1201px) {
+    
+}
+

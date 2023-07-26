@@ -2,6 +2,7 @@
 body[accent = 'blue']{
     /* Card Color */
     --color-white: rgba(255, 255, 255, 0.77);
+    --color-white: rgb(255, 255, 255);
     /* Font Color */
     --color-grey: #333;
     /* Background and highlights*/

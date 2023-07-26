@@ -106,6 +106,17 @@ export default function renderStaticContent(){
 
     // Read theme from local
     readThemeFromLocal();
+
+    // Create hamburger button
+    const menu = new Comp('button', {classList: ['menu-btn show-mobile'], textContent: '☰'}).render();
+    content.append(menu);
+    menu.addEventListener('click', e=>{
+        sidebar.classList.toggle('sidebar-expanded');
+        if(sidebar.classList.contains('sidebar-expanded')){
+            menu.textContent = 'X';
+        }
+        else menu.textContent = '☰';
+    })
 }
 
 // Settings Event Handler
