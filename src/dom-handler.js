@@ -3,7 +3,7 @@ import getTodoItem, { getMainInfo } from "./ui-components-main";
 import addBtn from './icons/add-icon-bold.svg';
 import tasksIcon from './icons/tasks-icon.svg';
 import todayIcon from './icons/today-icon-outline.svg';
-import profilePic from './avatars/avatar-2.png';
+import avatar2 from './avatars/avatar-2.png';
 import dropDown from './icons/dropdown-icon.svg';
 import editIcon from './icons/edit-icon-square.svg';
 import tickIcon from './icons/tick-icon.svg';
@@ -41,11 +41,13 @@ export default function renderStaticContent(){
     const profileSection = document.querySelector('.profile-section');
     profileSection.append(
         new Comp('div', {classList: ['profile-picture']}).render(),
-        new Comp('div', {classList: ['username'], textContent: 'Quiet2k'}).render(),
+        new Comp('div', {classList: ['username'], textContent: 'Username'}).render(),
         new Comp('div', {classList: ['taskmaster'], textContent: 'TaskMaster'}).render(),
         new Comp('img', {classList: ['settings-icon svg-accent'], src: settingsIcon , width: 25}).render(),
     )
-    const profilePicture = new Image(); profilePicture.src = profilePic; profilePicture.width = 50;
+    // const profilePicture = new Image(); profilePicture.src = profilePic; profilePicture.width = 50;
+    const profilePicture = new Comp('img', {classList: [`${Object.keys({avatar2})[0]}`], src: avatar2, width: 50}).render();
+
     // profilePicture.classList.add('svg');
     document.querySelector('.profile-picture').append(profilePicture);
     profilePicture.addEventListener('click', toggleTheme);
@@ -98,7 +100,7 @@ export default function renderStaticContent(){
     // Add event listener to settings icon
     const settings = document.querySelector('.settings-icon');
     settings.addEventListener('click', settingsEventHandler);
-    settings.click();
+    // settings.click();
 }
 
 // Settings Event Handler

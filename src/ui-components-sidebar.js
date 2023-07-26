@@ -65,21 +65,21 @@ export function getSettinsCard(){
     const buttonsContainer = new Comp('div', {classList: ['settings-buttons-container']}).render();
     card.append(usernameContainer, avatarContainer, accentContainer, buttonsContainer);
 
-    usernameContainer.append(
-        new Comp('input', {classList: ['username-input'], value: 'Username'}).render()
-    );        
-    
-    avatarContainer.append(
-        getAvatar(avatar1),
-        getAvatar(avatar2),
-        getAvatar(avatar3),
-        getAvatar(avatar4),
-        getAvatar(avatar5),
-        getAvatar(avatar6),
-    );
+    const userInput = new Comp('input', {classList: ['username-input'], value: document.querySelector('.username').textContent}).render();
+    userInput.setAttribute('maxlength', 15);
+    usernameContainer.append(userInput);
 
+    avatarContainer.append(
+        getAvatar(avatar1, 'avatar1'),
+        getAvatar(avatar2, 'avatar2'),
+        getAvatar(avatar3, 'avatar3'),
+        getAvatar(avatar4, 'avatar4'),
+        getAvatar(avatar5, 'avatar5'),
+        getAvatar(avatar6, 'avatar6'),
+    );
+    
     accentContainer.append(
-        getAccent('purple'),
+        getAccent('green'),
         getAccent('cyan'),
         getAccent('blue'),
         getAccent('purple'),
@@ -87,42 +87,69 @@ export function getSettinsCard(){
         getAccent('red'),
     );
 
+    const avatarName = document.querySelector('.profile-picture').querySelector('img').classList[0];
+    console.log(avatarName);
+    avatarContainer.querySelector(`.${avatarName}`).click();
+
+    const accent = document.body.getAttribute('accent');
+    accentContainer.querySelector(`.accent-${accent}`).click();
+    
     const toggleBtn = new Comp('div', {classList: ['theme-toggle']}).render();
     const circle = new Comp('div', {classList: ['toggle-circle']}).render();
     toggleBtn.append(circle);
     toggleBtn.addEventListener('click', e => {
         toggleBtn.classList.toggle('dark-on');
-        toggleTheme();
+        toggleTheme();  
     });
-
+    if(document.body.classList.contains('dark')) toggleBtn.classList.toggle('dark-on');
+    
+    const save = new Comp('button', {classList: ['settings-save-btn settings-btn'], textContent: 'Save'}).render();
+    const def = new Comp('button', {classList: ['settings-default-btn settings-btn'], textContent: 'Default'}).render();
     buttonsContainer.append(
         toggleBtn,
-        new Comp('btn', {classList: ['settings-default-btn settings-btn'], textContent: 'Default'}).render(),
-        new Comp('btn', {classList: ['settings-save-btn settings-btn'], textContent: 'Save'}).render(),
+        def,
+        save,
     );
+
+    save.addEventListener('click', e=>{
+        document.querySelector('.username').textContent = document.querySelector('.username-input').value || 'Username';
+        document.querySelector('.overlay').remove();
+    });
+
+    def.addEventListener('click', e=>{
+        avatarContainer.querySelector('.avatar2').click();
+        accentContainer.querySelector('.accent-blue').click();
+        if(document.body.classList.contains('dark')) toggleBtn.click();
+    });
 
     return card;
 }
 
-function getAvatar(name){
+function getAvatar(src, name){
     const avatar = new Comp('div', {classList: ['avatar']}).render(); 
     avatar.append(
-        new Comp('img', {classList: ['avatar-image'], src: name, width: 50}).render()
+        new Comp('img', {classList: [`avatar-image ${name}`], src: src, width: 50, draggable: false}).render()
     );
     avatar.addEventListener('click', e=>{
         // Remove selection from all others
         document.querySelectorAll('.avatar').forEach(av => av.classList.remove('avatar-chosen'));
+        const img = document.querySelector('.profile-picture').querySelector('img');
+        img.src = src;
+        img.classList.remove(img.className);
+        img.classList.add(name);
+
         // Add chosen class
         avatar.classList.add('avatar-chosen');
     });
     return avatar;
 }
 
-function getAccent(name, color){
+function getAccent(name){
     const accent = new Comp('div', {classList: [`accent-${name} accent`]}).render(); 
     accent.addEventListener('click', e=>{
         // Remove selection from all others
         document.querySelectorAll('.accent').forEach(acc => acc.classList.remove('chosen'));
+        document.body.setAttribute('accent', name);
         // Add chosen class
         accent.classList.add('chosen');
     });
