@@ -95,6 +95,7 @@ html{
     /* Hide scrollbar */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
+    transition: left 0.2s ease-in-out;
 }
 .sidebar::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
@@ -218,9 +219,6 @@ html{
 
 .dropdown-btn, .dropdown-btn-projects{
     width: 24px;
-}
-
-.dropdown-btn-projects{
 }
 
 .add-mode{
@@ -758,12 +756,19 @@ html{
 .menu-btn{
     color: var(--color-accent);
     background: none;
-    font-size: 14px;
     padding: 4px 6px;
     position: absolute;
+    font-weight: 600;
+    font-size: 14px;
     top: 5px;
     left: 10px;
-    font-weight: 600;
+    display: grid;
+    place-content: center;
+    place-items: center;
+
+    font-size: 20px;
+    top: 8px;
+    left: 12px;
 }
 
 .show-mobile{
@@ -800,10 +805,10 @@ html{
         width: 14px;
     }
     .dropdown-btn, .dropdown-btn-projects{
-        width: 16px;
+        /* width: 16px; */
     }
     .add-mode{
-        width: 18px;
+        /* width: 18px; */
     }
     .remove-project-btn{
         width: 12px;
@@ -913,27 +918,20 @@ html{
     }
 
     /* SVG size */
+    
     .menu-item img{
         width: 12px;
     }
     .dropdown-btn, .dropdown-btn-projects{
-        width: 14px;
+        width: 20px;
     }
     .add-mode{
-        width: 15px;
+        width: 22px;
     }
     .remove-project-btn{
         width: 10px;
     }
-    .edit-button{
-        width: 15px;
-    }
-    .remove-button{
-        width: 16px;
-    }
-    .tick{
-        width: 16px;
-    }
+    
     .settings-icon{
         width: 20px;
     }
@@ -968,6 +966,10 @@ html{
     .main-title-container{
         gap: 12px;
     }
+
+    .description-container{
+        margin-top: 10px;
+    }
 }
 
 /* 768px and above */
@@ -985,12 +987,15 @@ html{
         left: -300px;
         height: 100vh;
         z-index: 10;
+        padding-top: 50px;
     }
     .sidebar-expanded{
         left: 0px;
     }
     .main{
         padding: 40px 30px;
+        gap: 10px;
+        padding-top: 55px;
     }
     .todo-title{
         font-size: 12px;
@@ -1013,10 +1018,20 @@ html{
     .edit-form-3{
         gap: 6px;
     }
+    
     .show-mobile{
         display: block;
         z-index: 100;
     }
+
+    .sidebar-expanded{
+        border-right: 1px solid var(--color-accent-light);
+    }
+
+    .sidebar-expanded + .main{
+        pointer-events: none;
+    }
+    
 }
 
 /* 480px and above */
@@ -1025,11 +1040,11 @@ html{
         font-size: 10px;
     }
     .todo-item{
-        padding: 4px 10px;
+        padding: 8px 10px;
     }
     .main{
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     .description-body, .priority-container, .date-container, .edit-input, .btn-cancel, .btn-save, .new-project-button, .settings-btn{
         font-size: 8px;
@@ -1041,8 +1056,8 @@ html{
     .priority-container{
         width: 55px;
     }
-    .todo-item-main, .data-container, .buttons-container{
-        gap: 6px;
+    .data-container, .buttons-container{
+        /* gap: 6px; */
     }
     .todo-item{
         border-radius: 8px;
@@ -1054,6 +1069,24 @@ html{
         border-radius: 16px;
         display:  grid;
         gap: 5px;
+    }
+    .description-container{
+        margin-top: 8px;
+    }
+    .main-body{
+        gap: 0px;
+        border-top: 1px solid var(--color-accent-light);
+    }
+    .todo-item{
+        border: 0px;
+        padding: 10px 10px;
+    }
+    .todo-item{
+        border-bottom: 1px solid var(--color-accent-light);
+        border-radius: 0px;
+    }
+    .main-title-container{
+        padding: 0px 20px;
     }
 }
 

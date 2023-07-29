@@ -113,7 +113,7 @@ export default function renderStaticContent(){
     menu.addEventListener('click', e=>{
         sidebar.classList.toggle('sidebar-expanded');
         if(sidebar.classList.contains('sidebar-expanded')){
-            menu.textContent = 'X';
+            menu.textContent = 'x';
         }
         else menu.textContent = '☰';
     })

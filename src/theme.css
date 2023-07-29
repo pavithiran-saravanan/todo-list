@@ -40,6 +40,7 @@ body .remove-project-btn:hover, body .remove-button{
     --color-brick-light: #18171b81;
 }
 
+
 .dark .svg{
     /* White icons for dark mode*/
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(330deg) brightness(101%) contrast(106%);

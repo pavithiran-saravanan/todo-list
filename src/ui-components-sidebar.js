@@ -32,8 +32,8 @@ export function getMenuItem(title, imgSrc){
 }
 
 export function getProjectItem(title){
-    const element = new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-container project-item`]}).render();
-    element.append(new Comp('div', {classList: [`${title.toLowerCase().split(' ').join('-')}-title project-item-text`], textContent: title}).render());
+    const element = new Comp('div', {classList: [`project-item`]}).render();
+    element.append(new Comp('div', {classList: [`project-item-text`], textContent: title}).render());
     const removeBtn = new Comp('img', {classList: ['remove-project-btn btn svg'], src: cancelIcon, width: 10}).render();
     element.append(removeBtn);
 
