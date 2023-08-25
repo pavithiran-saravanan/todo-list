@@ -120,11 +120,12 @@ export class TodoApp{
     }
 
     // Get week's tasks
-    getWeeklyTodos(){
+    getWeeklyTodos() {
         const weeklyTodos = [];
         this.#projects.forEach((project)=>{
             project.todos.forEach(todo => {
-                if(differenceInDays(todo.dueDate, new Date()) < 7){
+                const diff = differenceInDays(todo.dueDate, new Date());
+                if(diff < 7 && diff >= 0){
                     weeklyTodos.push(todo);
                 };
             })
